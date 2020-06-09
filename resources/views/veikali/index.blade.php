@@ -18,7 +18,7 @@
                                 </div>
                                 <div class="col-md-8 col-sm-8">
                                     <h3 class="shopName">{{$shop->name}}</h3>
-                                    <p>{{$shop->address}}</p>
+                                    <p>{{strtok($shop->address, ',')}}</p>
                                     <small>{{$shop->type}}</small>
                                 </div>
                             </div>

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Grateful\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use Grateful\User;
 
 class DashboardController extends Controller
 {
@@ -26,6 +26,7 @@ class DashboardController extends Controller
     {
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
+        abort_if($user->is_admin !== 1, 404);
         return view('dashboard')->with(['shops'=>$user->shops,'listings'=>$user->listings]);
     }
 }

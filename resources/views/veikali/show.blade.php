@@ -5,7 +5,7 @@
     <h1>{{$shop->name}}</h1>
     <img style="width:100%" src="/storage/cover_images/{{$shop->cover_image}}">
     <div class="col-md-8 col-sm-8">
-        <p>{{$shop->address}}</p>
+        <p>{{strtok($shop->address, ',')}}</p>
         <small>{{$shop->type}}</small>
         <small>{{$shop->email}}</small>
     </div>
@@ -53,7 +53,7 @@
                                                     </div>
                                                         <input type="hidden" name="lister_name" value="{{$listing->lister_name}}">
                                                         <input type="hidden" name="boughtListing" value="{{$listing->listing_name}}">
-                                                        <input type="hidden" name="buyer" value="{{auth()->user()->id}}">
+                                                        <input type="hidden" name="buyer" value="admins@gmail.com">
                                                         {{-- {{Form::submit('Turpināt', ['class'=>'btn btn-primary'])}} --}}
                                                         <button type="submit" class="btn btn-primary">Turpināt</button>
                                                     </form>
@@ -74,12 +74,11 @@
                     {{-- </a> --}}
                 </li>
             <?php endif; ?>
-                @else
-                    <p>Šobrīd nav neviena piedāvājuma...</p>
-                    @break
                 @endif
             @endforeach
             </ul>
+            @else
+            <p>Šobrīd nav neviena piedāvājuma...</p>
         @endif
 
     @if(!Auth::guest())

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Grateful\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Shop;
-use App\Listing;
+use Grateful\Shop;
+use Grateful\Listing;
 use DB;
 
 class ShopsController extends Controller
@@ -53,10 +53,13 @@ class ShopsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
+            'name' => 'required|unique:shops,name,',
             'address' => 'required',
             'email' => 'required|email|unique:shops,email,'
-        ]);
+        ], [
+            'email.unique' => 'Šī e-pasta adrese jau reģistrēta.',
+            'name.unique' => 'Šis nosaukums jau reģistrēts.',
+       ]);
 
         // Handle file upload
         if($request->hasFile('cover_image')) {
@@ -80,7 +83,11 @@ class ShopsController extends Controller
         $shop->email = $request->input('email');
         $shop->phone = $request->input('phone');
         $shop->type = $request->input('type');
-        $shop->cover_image = $filenameToStore;
+        if ($request->hasFile('cover_image')) {
+            $shop->cover_image = $filenameToStore;
+        } else {
+            $shop->cover_image = "placeholder.jpg";
+        }
         $shop->user_id = auth()->user()->id;
         $shop->save();
 

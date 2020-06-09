@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Grateful;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'is_admin'
     ];
 
     /**
@@ -38,10 +38,10 @@ class User extends Authenticatable
     ];
 
     public function shops() {
-        return $this->hasMany('App\Shop');
+        return $this->hasMany('Grateful\Shop');
     }
 
     public function listings() {
-        return $this->hasMany('App\Listing');
+        return $this->hasMany('Grateful\Listing');
     }
 }

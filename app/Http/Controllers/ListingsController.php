@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Grateful\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Listing;
-use App\Purchase;
+use Grateful\Listing;
+use Grateful\Purchase;
 use DB;
 
 class ListingsController extends Controller

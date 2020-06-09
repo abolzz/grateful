@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'lv',
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'lv',
 
     /*
     |--------------------------------------------------------------------------
@@ -169,11 +169,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Grateful\Providers\AppServiceProvider::class,
+        Grateful\Providers\AuthServiceProvider::class,
+        // Grateful\Providers\BroadcastServiceProvider::class,
+        Grateful\Providers\EventServiceProvider::class,
+        Grateful\Providers\RouteServiceProvider::class,
 
     ],
 
