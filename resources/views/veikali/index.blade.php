@@ -56,8 +56,8 @@
                 xmlhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200 && this.responseText != "") {
                         document.getElementById("total_records").innerHTML = this.responseText;
-                    } else if (this.responseText == "") {
-                        document.getElementById("total_records").innerHTML = "Nekas netika atrasts...";
+                    } else if (this.readyState == 4 && this.status == 200 && this.responseText == "") {
+                            document.getElementById("total_records").innerHTML = "Nekas netika atrasts...";
                     }
                 };
                 xmlhttp.open("GET", "livesearch.php?search=" + str, true);
