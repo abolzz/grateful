@@ -23,7 +23,7 @@
             </div>
             <div class="form-group">
                 {{Form::label('pickup_time', 'Spēkā līdz')}}
-                {{Form::date('pickup_time', '', ['class' => 'form-control', 'placeholder' => 'Spēkā līdz'])}}
+                {{Form::time('pickup_time', \Carbon\Carbon::now()->timezone('Europe/Riga')->format('H:i'),['class' => 'form-control', 'placeholder' => 'Spēkā līdz'])}}
             </div>
                 <input type="hidden" name="lister_name" value="{{ Auth::user()->email }}">
             {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}

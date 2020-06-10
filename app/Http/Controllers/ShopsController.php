@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Grateful\Shop;
 use Grateful\Listing;
+use Carbon\Carbon;
 use DB;
 
 class ShopsController extends Controller
@@ -103,7 +104,7 @@ class ShopsController extends Controller
     public function show($id)
     {
         $shop = Shop::find($id);
-        $listings = Listing::all();
+        $listings = Listing::all()->where('lister_name', $shop->email);
         return view('veikali.show')->with(['shop'=>$shop,'listings'=>$listings]);
     }
 

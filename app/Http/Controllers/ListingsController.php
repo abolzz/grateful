@@ -55,7 +55,7 @@ class ListingsController extends Controller
             'description' => 'required',
             'quantity' => 'required|integer|between:1,10',
             'price' => 'required|integer|min:1',
-            'pickup_time' => 'required|date_format:Y-m-d|after:today'
+            'pickup_time' => 'required'
         ],
         ['listing_name.required' => 'Lūdzu ievadiet piedāvājuma nosaukumu',
          'description.required' => 'Lūdzu ievadiet aprakstu',
@@ -63,8 +63,7 @@ class ListingsController extends Controller
          'quantity.between' => 'Daudzumam jābūt no 1 līdz 10',
          'price.required' => 'Lūdzu ievadiet cenu',
          'price.min' => 'Cena nevar būt mazāka par 1€',
-         'pickup_time.required' => 'Lūdzu ievadiet saņemšanas laiku',
-         'pickup_time.after' => 'Nepareizs datums']);
+         'pickup_time.required' => 'Lūdzu ievadiet saņemšanas laiku']);
 
         // Handle file upload
         // if($request->hasFile('cover_image')) {
@@ -139,7 +138,7 @@ class ListingsController extends Controller
             'description' => 'required',
             'quantity' => 'required|integer|between:1,10',
             'price' => 'required|integer|min:1',
-            'pickup_time' => 'required|date_format:Y-m-d|after:today'
+            'pickup_time' => 'required'
         ],
         ['listing_name.required' => 'Lūdzu ievadiet piedāvājuma nosaukumu',
          'description.required' => 'Lūdzu ievadiet aprakstu',
@@ -147,8 +146,7 @@ class ListingsController extends Controller
          'quantity.between' => 'Daudzumam jābūt no 1 līdz 10',
          'price.required' => 'Lūdzu ievadiet cenu',
          'price.min' => 'Cena nevar būt mazāka par 1€',
-         'pickup_time.required' => 'Lūdzu ievadiet saņemšanas laiku',
-         'pickup_time.after' => 'Nepareizs datums']);
+         'pickup_time.required' => 'Lūdzu ievadiet saņemšanas laiku']);
 
         // Handle file upload
         // if($request->hasFile('cover_image')) {

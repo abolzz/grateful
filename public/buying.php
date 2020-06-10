@@ -23,7 +23,7 @@
     // }
     
     // reservations(buying)
-    if(isset($_GET['boughtListing'])) {
+    if(isset($_GET['boughtListing']) && isset($_GET['boughtQuantity']) && isset($_GET['lister_name']) && isset($_GET['buyer'])) {
    
         $bought_listing = $_GET['boughtListing'];
         $bought_quantity = $_GET['boughtQuantity'];
@@ -57,6 +57,8 @@
 
         }
         
+    } else {
+        header('Location: '. '/');
     }
 
     $gateway = new Braintree_Gateway([
