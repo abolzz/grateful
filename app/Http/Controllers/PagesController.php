@@ -10,11 +10,6 @@ use DB;
 class PagesController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth', ['except' => ['index']]);
-    }
-
     public function index(){
         $title = 'Grateful';
         return view('pages.index')->with('title', $title);
@@ -22,10 +17,6 @@ class PagesController extends Controller
 
     public function map(){
         $shops = Shop::all();
-        // $data = [
-        //     'shop_lat'   => $shops->address_latitude,
-        //     'shop_lng' => $shops->address_longtitude
-        // ];
         return view('pages.karte')->with('shops', $shops);
     }
 

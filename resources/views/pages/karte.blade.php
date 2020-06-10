@@ -12,8 +12,8 @@
 @endforeach
 
 @section('scripts')
-    <script type="application/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places&language=lv" async defer></script>
-    <script type="application/javascript">
+    <script type="application/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places&language=lv"></script>
+    <script type="application/javascript" async defer>
     	var locations = [
     	<?php for($i=0;$i<sizeof($locations);$i++)
         { ?>
@@ -24,8 +24,7 @@
 		var geocoder;
 		var map;
 
-		function initialize() {
-		  var bounds = new google.maps.LatLngBounds();
+		google.maps.event.addDomListener(window, "load", function() {
 		  map = new google.maps.Map(
 		    document.getElementById("address-map-container"), {
 		      center: new google.maps.LatLng(56.949559, 24.104823),
@@ -35,13 +34,9 @@
 		  geocoder = new google.maps.Geocoder();
 
 		  for (i = 0; i < locations.length; i++) {
-
-
 		    geocodeAddress(locations, i);
 		  }
-		}
-		var bounds = new google.maps.LatLngBounds();
-		google.maps.event.addDomListener(window, "load", initialize);
+		 })
 
 		function geocodeAddress(locations, i) {
 		  var title = locations[i][0];
@@ -61,10 +56,11 @@
 		          address: address
 		        })
 		        infoWindow(marker, map, title, address);
-		        bounds.extend(marker.getPosition());
-		        map.fitBounds(bounds);
 		      } else {
-		        alert("geocode of " + address + " failed:" + status);
+		      	if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
+		      		setTimeout(200);
+		      	}
+		        console.log("geocode of " + address + " failed:" + status);
 		      }
 		    });
 		}
@@ -89,8 +85,6 @@
 		    animation: google.maps.Animation.DROP,
 		    address: address
 		  })
-		  bounds.extend(marker.getPosition());
-		  map.fitBounds(bounds);
 		  infoWindow(marker, map, title, address);
 		  return marker;
 		}

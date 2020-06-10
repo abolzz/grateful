@@ -33,6 +33,7 @@
                 @yield('scripts')
             </div>
         </main>
+        @include('includes.footer')
     </div>
 </body>
 </html>

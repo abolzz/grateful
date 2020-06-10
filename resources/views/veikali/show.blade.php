@@ -1,9 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <a href="/veikali" class="btn btn-default">Atpakaļ</a>
-    <h1>{{$shop->name}}</h1>
-    <img style="width:100%" src="/storage/cover_images/{{$shop->cover_image}}">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container" style="background-image: url(/storage/cover_images/{{$shop->cover_image}});background-size: cover;">
+            <a href="/veikali" class="btn btn-default">Atpakaļ</a>
+            <h1>{{$shop->name}}</h1>
+        </div>
+    </div>
     <div class="col-md-8 col-sm-8">
         <p>{{strtok($shop->address, ',')}}</p>
         <small>{{$shop->type}}</small>
@@ -14,15 +17,13 @@
             <ul class="">
             @foreach ($listings as $listing)
                 @if($listing->lister_name == $shop->email)
-                <?php if ($listing['quantity'] > 0) : ?>
+                @if($listing->lister_name > 0)
                 <li class="shop">
                     {{-- <a href="/veikali/{{$listing->id}}"> --}}
                     
                         <div class="well">
                             <div class="row">
-                                {{-- <div class="col-md-4 col-sm-4">
                                     <img style="width:100%" src="/storage/cover_images/{{$shop->cover_image}}">
-                                </div> --}}
                                 <div class="col-md-8 col-sm-8">
                                     <h3 class="shopName">{{$listing->listing_name}}</h3>
                                     <p>{{$listing->description}}</p>
@@ -33,6 +34,19 @@
                                     <div id="buyingModal{{$listing->id}}" class="modal" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
                                           <div class="modal-content">
+                                            @guest
+                                            <div class="modal-header">
+                                              <h5 class="modal-title">Ienāciet, lai veiktu pirkumus</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <a class="link" href="{{ route('login') }}">{{ __('Ienākt') }}</a>
+                                                <span>vai</span>
+                                                <a class="link" href="{{ route('register') }}">{{ __('Reģistrēties') }}</a>
+                                            </div>
+                                            @else
                                             <div class="modal-header">
                                               <h5 class="modal-title">Izvēlēties daudzumu</h5>
                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -63,6 +77,7 @@
                                                 {!! Form::close() !!}
                                               <button type="button" class="btn btn-danger" data-dismiss="modal">Atcelt</button>
                                             </div>
+                                            @endguest
                                           </div>
                                         </div>
                                     </div>
@@ -73,12 +88,13 @@
 
                     {{-- </a> --}}
                 </li>
-            <?php endif; ?>
+            @endif
+            @else
+            <p>Šobrīd nav neviena piedāvājuma...</p>
+            @break
                 @endif
             @endforeach
             </ul>
-            @else
-            <p>Šobrīd nav neviena piedāvājuma...</p>
         @endif
 
     @if(!Auth::guest())
