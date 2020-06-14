@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Grateful\Shop;
 use Grateful\Listing;
-use Carbon\Carbon;
 use DB;
 
 class ShopsController extends Controller
