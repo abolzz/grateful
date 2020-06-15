@@ -19,7 +19,7 @@ Route::get('/pirkumi', 'PagesController@purchases');
 Route::resource('piedavajumi', 'ListingsController');
 Route::resource('veikali', 'ShopsController');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/dashboard', 'DashboardController@index');
 
