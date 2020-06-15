@@ -14,7 +14,7 @@
 Route::get('/', 'ShopsController@index');
 Route::get('/karte', 'PagesController@map');
 Route::get('/pirkumi', 'PagesController@purchases');
-Route::get('/profils', 'PagesController@profile');
+// Route::get('/profils', 'PagesController@profile');
 
 Route::resource('piedavajumi', 'ListingsController');
 Route::resource('veikali', 'ShopsController');
@@ -22,3 +22,6 @@ Route::resource('veikali', 'ShopsController');
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');
+
+Route::get('profils', 'ChangePasswordController@index');
+Route::post('profils', 'ChangePasswordController@store')->name('change.password');
