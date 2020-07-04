@@ -3,27 +3,21 @@
 @section('content')
 
     @if(count($shops) > 0)
-        <form id="search-form" class="col-md-4">  
-            <input class="form-control" type="search" name="search" onkeydown="noEnter();" onkeyup="noEnter();showHint(this.value)" onsearch="noEnter();showHint(this.value)" placeholder="Meklēt"><br>  
+        <div class="row">
+          <form id="search-form" class="col-8 mx-auto align-self-center d-flex" style="height: 100px">  
+            <input class="form-control align-self-center" type="search" name="search" onkeydown="noEnter();" onkeyup="noEnter();showHint(this.value)" onsearch="noEnter();showHint(this.value)" placeholder="Meklēt"><br>  
           </form>
-        <ul id="total_records">
+        </div>
+        <ul id="total_records" class="list-group shops-list flex-row flex-wrap">
             @foreach ($shops as $shop)
-                <li class="shop">
-                    <a href="/veikali/{{$shop->id}}">
-                    
-                        <div class="well">
-                            <div class="row">
-                                <div class="col-md-4 col-sm-4">
-                                    <img style="width:100%" src="/storage/cover_images/{{$shop->cover_image}}">
-                                </div>
-                                <div class="col-md-8 col-sm-8">
-                                    <h3 class="shopName">{{$shop->name}}</h3>
-                                    <p>{{strtok($shop->address, ',')}}</p>
-                                    <small>{{$shop->type}}</small>
-                                </div>
-                            </div>
-                        </div>
-
+                <li class="shop list-group-item col-md-4 col-sm-6 col-xs-12 mb-4 border-0 p-0">
+                    <a href="/veikali/{{$shop->id}}" class="card col-11 mx-auto p-0 text-dark btn">
+                      <img class="card-img-top" src="/storage/cover_images/{{$shop->cover_image}}" alt="{{$shop->name}} cover image">
+                      <div class="card-body text-left">
+                        <h5 class="card-title">{{$shop->name}}</h5>
+                        <p class="card-text">{{strtok($shop->address, ',')}}</p>
+                        <small class="border border-dark rounded p-1 bg-dark text-white">{{$shop->type}}</small>
+                      </div>
                     </a>
                 </li>
             @endforeach
@@ -34,14 +28,12 @@
     @endif
 @endsection
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-
 <script>
 
         var enter = false;
 
         function noEnter() {
-            $("#search-form").bind("keypress", function(e) {
+            document.getElementById("search-form").addEventListener('keypress', function(e) {
                 if (e.keyCode == 13) {
                     enter = true;
                     return false;

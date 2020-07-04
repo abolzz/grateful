@@ -1,5 +1,45 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+@media only screen and (max-width: 767px) {
+  .mobile-navbar {
+    -webkit-transition: bottom 0.5s ease;
+    transition: bottom 0.5s ease;
+    position: fixed !important;
+    z-index: 999;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .mobile-navbar.navbar-hide {
+    bottom: -55px;
+  }
+
+  .mobile-navbar .navbar-collapse.show-mobile {
+    display: block !important;
+  }
+
+  .mobile-navbar .navbar-nav {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+            flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .mobile-navbar .navbar-nav .nav-link span {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .navbar-nav .nav-link svg {
+    display: none;
+  }
+}
+
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors

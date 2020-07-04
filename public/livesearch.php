@@ -13,24 +13,16 @@
   
       foreach ($result as $shop) {
         ?>
-        <li class="shop">
-        <a href="/veikali/<?php echo $shop['id'] ?>">
-        
-            <div class="well">
-                <div class="row">
-                    <div class="col-md-4 col-sm-4">
-                        <img style="width:100%" src="/storage/cover_images/<?php echo $shop['cover_image'] ?>">
-                    </div>
-                    <div class="col-md-8 col-sm-8">
-                        <h3 class="shopName"><?php echo $shop['name'] ?></h3>
-                        <p><?php echo $shop['address'] ?></p>
+                <li class="shop list-group-item col-md-4 col-sm-6 col-xs-12 mb-4 border-0 p-0">
+                    <a href="/veikali/<?php echo $shop['id'] ?>" class="card col-11 mx-auto p-0">
+                      <img class="card-img-top" src="/storage/cover_images/<?php echo $shop['cover_image'] ?>" alt="<?php echo $shop['name'] ?> cover image">
+                      <div class="card-body">
+                        <h5 class="card-title"><?php echo $shop['name'] ?></h5>
+                        <p class="card-text"><?php echo $shop['address'] ?></p>
                         <small><?php echo $shop['type'] ?></small>
-                    </div>
-                </div>
-            </div>
-
-        </a>
-        </li>
+                      </div>
+                    </a>
+                </li>
         <?php
       }
      }

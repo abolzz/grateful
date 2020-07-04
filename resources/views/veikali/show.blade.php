@@ -13,17 +13,13 @@
 </div>
 <h2>Piedāvājumi</h2>
 @if(count($listings) > 0)
-<ul class="">
+<ul class="list-group">
     @foreach ($listings as $listing)
     @if($listing->quantity > 0)
-    <li class="shop">
-        {{-- <a href="/veikali/{{$listing->id}}"> --}}
-            
-            <div class="well">
-                <div class="row">
-                    <div class="col-md-8 col-sm-8">
-                        <h3 class="shopName">{{$listing->listing_name}}</h3>
-                        <p>{{$listing->description}}</p>
+    <li class="list-group-item col-12 listing mb-4 border-0 p-0">
+                    <div class="card mx-auto p-0 text-dark d-flex flex-row justify-content-around align-items-center border rounded">
+                        <h3 class="shopName mb-0">{{$listing->listing_name}}</h3>
+                        <p class="mb-0">{{$listing->description}}</p>
                         <small>{{$listing->price}}</small>
                         @if(Carbon\Carbon::now()->lt($listing->pickup_time))
                         <small>{{ Carbon\Carbon::parse($listing->pickup_time)->format('H:i') }}</small>
@@ -82,9 +78,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        {{-- </a> --}}
     </li>
     @endif
     @endforeach
@@ -103,8 +96,8 @@
 @endif
 @endsection
 <script>
-function buying(id) {
-var buyingModal = '#buyingModal' + id;
-$(buyingModal).modal('show');
-}
+    function buying(id) {
+    var buyingModal = '#buyingModal' + id;
+    $(buyingModal).modal('show');
+    }
 </script>

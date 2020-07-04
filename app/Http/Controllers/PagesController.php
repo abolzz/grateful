@@ -6,13 +6,15 @@ use Illuminate\Http\Request;
 use Grateful\Purchase;
 use Grateful\Shop;
 use DB;
+use Jenssegers\Agent\Agent;
 
 class PagesController extends Controller
 {
 
     public function index(){
         $title = 'Grateful';
-        return view('pages.index')->with('title', $title);
+        $agent = new Agent();
+        return view('pages.index')->with('agent', $agent);
     }
 
     public function map(){
