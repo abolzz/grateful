@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Grateful\Purchase;
 use Grateful\Shop;
 use DB;
-use Jenssegers\Agent\Agent;
 
 class PagesController extends Controller
 {
