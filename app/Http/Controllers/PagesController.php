@@ -12,8 +12,7 @@ class PagesController extends Controller
 
     public function index(){
         $title = 'Grateful';
-        $agent = new Agent();
-        return view('pages.index')->with('agent', $agent);
+        return view('pages.index')->with('title', $title);
     }
 
     public function map(){
