@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="jumbotron jumbotron-fluid">
-    <div class="container" style="background-image: url(/storage/cover_images/{{$shop->cover_image}});background-size: cover;">
+    <div class="container" style="background-image: url(https://res.cloudinary.com/hzdsckd6b/image/upload/v1594144521/{{$shop->cover_image}});background-size: cover;">
         <a href="/veikali" class="btn btn-default">Atpakaļ</a>
         <h1>{{$shop->name}}</h1>
     </div>
