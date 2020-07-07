@@ -51,10 +51,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <form action="../buying.php" method="GET">
-                                            {{-- {!! Form::open(['action' => 'ListingsController@buy', 'method' => 'GET']) !!} --}}
                                             <div class="form-group">
-                                                {{-- {{Form::label('quantity', 'Skaits')}}
-                                                {{Form::select('quantity', , ['class' => 'form-control', 'placeholder' => 'Skaits'])}} --}}
                                                 <select class="quantitySelect" name="boughtQuantity">
                                                     <?php for ($i = 1; $i <= $listing['quantity']; $i++) : ?>
                                                     <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
@@ -64,7 +61,6 @@
                                             <input type="hidden" name="lister_name" value="{{$listing->lister_name}}">
                                             <input type="hidden" name="boughtListing" value="{{$listing->listing_name}}">
                                             <input type="hidden" name="buyer" value="admins@gmail.com">
-                                            {{-- {{Form::submit('Turpināt', ['class'=>'btn btn-primary'])}} --}}
                                             <button type="submit" class="btn btn-primary">Turpināt</button>
                                         </form>
                                     </div>
