@@ -17,12 +17,12 @@
       foreach ($result as $shop) {
         ?>
                 <li class="shop list-group-item col-md-4 col-sm-6 col-xs-12 mb-4 border-0 p-0">
-                    <a href="/veikali/<?php echo $shop['id'] ?>" class="card col-11 mx-auto p-0">
-                      <div style="background-image: url(https://res.cloudinary.com/hzdsckd6b/image/upload/v1594144521/{{$shop->cover_image}});background-size: cover;height: 150px;background-position: center;"></div>
-                      <div class="card-body">
+                    <a href="/veikali/<?php echo $shop['id'] ?>" class="card col-11 mx-auto p-0 text-dark btn">
+                      <div style="background-image: url(https://res.cloudinary.com/hzdsckd6b/image/upload/v1594144521/<?php echo $shop['cover_image'] ?>);background-size: cover;height: 150px;background-position: center;"></div>
+                      <div class="card-body text-left">
                         <h5 class="card-title"><?php echo $shop['name'] ?></h5>
                         <p class="card-text"><?php echo $shop['address'] ?></p>
-                        <small><?php echo $shop['type'] ?></small>
+                        <small class="border border-dark rounded p-1 bg-dark text-white"><?php echo $shop['type'] ?></small>
                       </div>
                     </a>
                 </li>
