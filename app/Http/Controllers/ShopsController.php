@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Grateful\Shop;
 use Grateful\Listing;
 use DB;
+use JD\Cloudder\Facades\Cloudder;
 
 class ShopsController extends Controller
 {
@@ -74,6 +75,11 @@ class ShopsController extends Controller
             $filenameToStore = $filename.'_'.time().'.'.$extension;
             // Upload image
             $path = $request->file('cover_image')->storeAs('public/cover_images', $filenameToStore);
+
+            $image_name = $request->file('cover_image')->getRealPath();
+            Cloudder::upload($image_name, null);
+            $cover_image_id = Cloudder::getPublicId();
+            // Cloudder::upload($image_name, array("public_id" => $filename));
         }
 
         // Create a shop
@@ -84,9 +90,9 @@ class ShopsController extends Controller
         $shop->phone = $request->input('phone');
         $shop->type = $request->input('type');
         if ($request->hasFile('cover_image')) {
-            $shop->cover_image = $filenameToStore;
+            $shop->cover_image = $cover_image_id;
         } else {
-            $shop->cover_image = "placeholder.jpg";
+            $shop->cover_image = "image-placeholder_rrc5fk.jpg";
         }
         $shop->user_id = auth()->user()->id;
         $shop->save();
@@ -170,65 +176,6 @@ class ShopsController extends Controller
 
         return redirect('/veikali')->with('success', 'Veikals labots');
     }
-
-    /**
-     * Search for shops by name
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
-    // public function search(Request $request) {
-    //     if($request->ajax()){
-    //         $query = $request->get('query');
-    //         if($query != ''){
-    //             $data = DB::table('shops')->where('name', 'like', '%'.$query.'%')->get();
-    //         } else {
-    //           $data = DB::table('shops')->get(); 
-    //         }
-
-    //         // check if there are results
-    //         $total_row = $data->count();
-    //         if($total_row > 0){
-    //             foreach($data as $row){
-    //                 $output .= '<li>
-    //                                 <a href="/veikali/{{$row->id}}">
-                                    
-    //                                     <div class="well">
-    //                                         <div class="row">
-    //                                             <div class="col-md-4 col-sm-4">
-    //                                                 <img style="width:100%" src="/storage/cover_images/{{$row->cover_image}}">
-    //                                             </div>
-    //                                             <div class="col-md-8 col-sm-8">
-    //                                                 <h3>{{$row->name}}</h3>
-    //                                                 <p>{{$row->address}}</p>
-    //                                                 <small>{{$row->type}}</small>
-    //                                             </div>
-    //                                         </div>
-    //                                     </div>
-
-    //                                 </a>
-    //                             </li>';
-    //             }
-    //         } else {
-    //             $output = '<span>Hmmm.. Nevarējām atrast. Pamēģini vēlreiz!</span>';
-    //         }
-
-    //         $data = array('table_data' => $output);
-
-    //         echo json_encode($data);
-    //     }
-    // }
-
-    // public function search(Request $request){
-    //     $search = $request->input('search');
-    
-    //     $shop = Shop::with('name', function($query) use ($search) {
-    //          $query->where('search', 'LIKE', '%' . $search . '%');
-    //     })->get();
-    
-    //     return view('veikali.index', compact('shop'));
-    // }
 
     /**
      * Remove the specified resource from storage.
