@@ -5,7 +5,7 @@
 
   $search = $_GET["search"];
   $link = mysqli_connect(env('DB_HOST', '127.0.0.1'), env('DB_USERNAME', 'forge'), env('DB_PASSWORD', ''), env('DB_DATABASE', '')) OR die (mysqli_error());
-  mysqli_select_db ($link, "grateful") or die(mysqli_error());
+  mysqli_select_db ($link, env('DB_DATABASE', 'grateful')) or die(mysqli_error());
 
   $query = "SELECT * FROM `shops` WHERE `name` LIKE '$search%' ORDER BY `id` DESC";
 
