@@ -64,22 +64,9 @@ class ShopsController extends Controller
 
         // Handle file upload
         if($request->hasFile('cover_image')) {
-            // Get filename with extension
-            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
-
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just the extension
-            $extension = $request->file('cover_image')->getClientOriginalExtension();
-            // Filename to store
-            $filenameToStore = $filename.'_'.time().'.'.$extension;
-            // Upload image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $filenameToStore);
-
             $image_name = $request->file('cover_image')->getRealPath();
             Cloudder::upload($image_name, null);
             $cover_image_id = Cloudder::getPublicId();
-            // Cloudder::upload($image_name, array("public_id" => $filename));
         }
 
         // Create a shop
@@ -149,17 +136,9 @@ class ShopsController extends Controller
 
         // Handle file upload
         if($request->hasFile('cover_image')) {
-            // Get filename with extension
-            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
-
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just the extension
-            $extension = $request->file('cover_image')->getClientOriginalExtension();
-            // Filename to store
-            $filenameToStore = $filename.'_'.time().'.'.$extension;
-            // Upload image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $filenameToStore);
+            $image_name = $request->file('cover_image')->getRealPath();
+            Cloudder::upload($image_name, null);
+            $cover_image_id = Cloudder::getPublicId();
         }
 
         // Edit a shop
@@ -170,7 +149,12 @@ class ShopsController extends Controller
         $shop->phone = $request->input('phone');
         $shop->type = $request->input('type');
         if($request->hasFile('cover_image')) {
-            $shop->cover_image = $filenameToStore;
+            // Delete the old image
+            Cloudder::destroy($shop->cover_image);
+            // and upload the new one
+            $shop->cover_image = $cover_image_id;
+        } else {
+            $shop->cover_image = "image-placeholder_rrc5fk.jpg";
         }
         $shop->save();
 
@@ -192,8 +176,10 @@ class ShopsController extends Controller
             return redirect('/veikali')->with('error', 'Nav pieejas');
         }
 
-        // Delete the image
-        Storage::delete('public/cover_images/'.$shop->cover_image);
+        // Delete the cover image if not placeholder
+        if($shop->cover_image != "image-placeholder_rrc5fk.jpg") {
+            Cloudder::destroy($shop->cover_image);
+        }
 
         $shop->delete();
 
