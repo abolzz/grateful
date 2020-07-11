@@ -13,10 +13,16 @@
                 {{Form::label('phone', 'Telefona nr.')}}
                 {{Form::number('phone', '', ['class' => 'form-control', 'placeholder' => 'Telefona nr.'])}}
             </div>
-            <div class="form-group">
-                {{Form::label('type', 'Tips')}}
-                {{Form::text('type', '', ['class' => 'form-control', 'placeholder' => 'Tips'])}}
-            </div>
+              <div class="form-group">
+                <label for="type">Tips</label>
+                <select multiple class="form-control" name="type[]" id="type" size="5">
+                  <option>Sushi</option>
+                  <option>Pica</option>
+                  <option>Kebabi</option>
+                  <option>Tradicionālā virtuve</option>
+                  <option>Dažādi</option>
+                </select>
+              </div>
             <div class="form-group">
                 {{Form::label('email', 'E-pasts')}}
                 {{Form::text('email', '', ['class' => 'form-control', 'placeholder' => 'E-pasts'])}}
@@ -31,7 +37,12 @@
                 <div style="width: 100%; height: 100%" id="address-map"></div>
             </div>
             <div class="form-group">
+                {{Form::label('cover_image', 'Veikala titulbilde')}}
                 {{Form::file('cover_image')}}
+            </div>
+            <div class="form-group">
+                {{Form::label('logo_image', 'Veikala logotips')}}
+                {{Form::file('logo_image')}}
             </div>
             {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
         {!! Form::close() !!}

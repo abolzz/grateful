@@ -69,17 +69,29 @@ class ShopsController extends Controller
             $cover_image_id = Cloudder::getPublicId();
         }
 
+        if($request->hasFile('logo_image')) {
+            $logo_image_name = $request->file('logo_image')->getRealPath();
+            Cloudder::upload($logo_image_name, null, ["folder" => "logos"]);
+            $logo_image_id = Cloudder::getPublicId();
+        }
+
         // Create a shop
         $shop = new Shop;
         $shop->name = $request->input('name');
         $shop->address = $request->input('address');
         $shop->email = $request->input('email');
         $shop->phone = $request->input('phone');
-        $shop->type = $request->input('type');
+        $shop->type = implode(',', $request->input('type'));
+
         if ($request->hasFile('cover_image')) {
             $shop->cover_image = $cover_image_id;
         } else {
             $shop->cover_image = "image-placeholder_rrc5fk.jpg";
+        }
+        if ($request->hasFile('logo_image')) {
+            $shop->logo_image = $logo_image_id;
+        } else {
+            $shop->logo_image = "image-placeholder_rrc5fk.jpg";
         }
         $shop->user_id = auth()->user()->id;
         $shop->save();
@@ -141,13 +153,22 @@ class ShopsController extends Controller
             $cover_image_id = Cloudder::getPublicId();
         }
 
+        if($request->hasFile('logo_image')) {
+            $logo_image_name = $request->file('logo_image')->getRealPath();
+            Cloudder::upload($logo_image_name, null, ["folder" => "logos"]);
+            $logo_image_id = Cloudder::getPublicId();
+        }
+
         // Edit a shop
         $shop = Shop::find($id);
         $shop->name = $request->input('name');
         $shop->address = $request->input('address');
         $shop->email = $request->input('email');
         $shop->phone = $request->input('phone');
-        $shop->type = $request->input('type');
+        // $type = $request->input('type');
+
+        $shop->type = json_encode(input('type'));
+
         if($request->hasFile('cover_image')) {
             // Delete the old image
             Cloudder::destroy($shop->cover_image);
@@ -155,6 +176,14 @@ class ShopsController extends Controller
             $shop->cover_image = $cover_image_id;
         } else {
             $shop->cover_image = "image-placeholder_rrc5fk.jpg";
+        }
+        if($request->hasFile('logo_image')) {
+            // Delete the old image
+            Cloudder::destroy($shop->logo_image);
+            // and upload the new one
+            $shop->logo_image = $logo_image_id;
+        } else {
+            $shop->logo_image = "image-placeholder_rrc5fk.jpg";
         }
         $shop->save();
 

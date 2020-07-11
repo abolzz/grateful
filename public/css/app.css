@@ -40,6 +40,33 @@
   }
 }
 
+.shops-list .shop .shop-cover-image {
+  background-size: cover;
+  height: 150px;
+  background-position: center;
+  position: relative;
+}
+
+.shops-list .shop .shop-cover-image:after {
+  content: "";
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  background-color: #fff;
+  opacity: 0.75;
+  border-radius: 50%;
+}
+
+.shops-list .shop .shop-cover-image .shop-logo {
+  width: 50px;
+  height: auto;
+  z-index: 1;
+}
+
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
