@@ -1,11 +1,19 @@
 @extends('layouts.app')
-@section('content')
-<div class="jumbotron jumbotron-fluid">
-    <div class="container" style="background-image: url(https://res.cloudinary.com/hzdsckd6b/image/upload/v1594144521/{{$shop->cover_image}});background-size: cover;">
-        <a href="/veikali" class="btn btn-default">Atpakaļ</a>
+@section('jumbotron')
+<div class="jumbotron jumbotron-fluid p-0 shop-cover-image" style="background-image: url(https://res.cloudinary.com/hzdsckd6b/image/upload/v1594144521/{{$shop->cover_image}});">
+    <img class="shop-logo position-absolute" src="https://res.cloudinary.com/hzdsckd6b/image/upload/v1594483516/{{$shop->logo_image}}" alt="{{$shop->name}} logo">
+    <div class="container h-100 d-flex flex-column justify-content-between" >
+        <a href="/veikali" class="text-dark">
+            <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-arrow-left-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M7.854 4.646a.5.5 0 0 1 0 .708L5.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z"/>
+              <path fill-rule="evenodd" d="M4.5 8a.5.5 0 0 1 .5-.5h6.5a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+        </a>
         <h1>{{$shop->name}}</h1>
     </div>
 </div>
+@endsection
+@section('content')
 <div class="col-md-8 col-sm-8">
     <p>{{strtok($shop->address, ',')}}</p>
     <small>{{$shop->type}}</small>

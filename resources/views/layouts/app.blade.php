@@ -20,6 +20,7 @@
         <main>
             @include('includes.navbar')
             @include('includes.messages')
+            @yield('jumbotron')
             <div class="container">
                 @yield('content')
                 @yield('scripts')

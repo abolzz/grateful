@@ -40,14 +40,19 @@
   }
 }
 
-.shops-list .shop .shop-cover-image {
+.shop-cover-image {
   background-size: cover;
   height: 150px;
   background-position: center;
   position: relative;
 }
 
-.shops-list .shop .shop-cover-image:after {
+.shop-cover-image.jumbotron {
+  height: 180px;
+}
+
+.round-logo:after,
+.shop-cover-image:after {
   content: "";
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -61,10 +66,17 @@
   border-radius: 50%;
 }
 
-.shops-list .shop .shop-cover-image .shop-logo {
+.shop-logo {
   width: 50px;
   height: auto;
   z-index: 1;
+}
+
+.shop-logo.position-absolute {
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
 }
 
 /*!
