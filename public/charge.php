@@ -5,7 +5,7 @@ require_once('config/db.php');
 require_once('lib/pdo_db.php');
 require_once('models/Purchase.php');
 require_once('../vendor/stripe/stripe-php/init.php');
-\Stripe\Stripe::setApiKey('sk_test_51H8QonCs4UEdws6aY6qGaxaWbeccLdKwnSOCAkXukGpqZAuNNlks6PfrQFgrZuI5MjEkvlcuNgNKFkQGpasFggmI00lDThwjzH');
+\Stripe\Stripe::setApiKey(getenv('STRIPE_API_KEY'));
 
 // Sanitize POST array
 $POST = filter_var_array($_POST, FILTER_SANITIZE_STRING);

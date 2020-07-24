@@ -6,24 +6,43 @@ var elements = stripe.elements();
 // Custom styling can be passed to options when creating an Element.
 var style = {
   base: {
-    // Add your base input styles here. For example:
     fontSize: '16px',
     color: '#32325d',
   },
 };
 
 // Create an instance of the card Element.
-var card = elements.create('card', {style: style});
+var cardNumber = elements.create('cardNumber', {
+  placeholder: 'Kartes nr',
+  style: style
+});
 
 // Add an instance of the card Element into the `card-element` <div>.
-card.mount('#card-element');
+cardNumber.mount('#card-element-nr');
+
+// Create an instance of the card Element.
+var cardCvc = elements.create('cardCvc', {
+  style: style
+});
+
+// Add an instance of the card Element into the `card-element` <div>.
+cardCvc.mount('#card-element-cvc');
+
+// Create an instance of the card Element.
+var cardExpiry = elements.create('cardExpiry', {
+  placeholder: 'MM/GG',
+  style: style
+});
+
+// Add an instance of the card Element into the `card-element` <div>.
+cardExpiry.mount('#card-element-expiry');
 
 // Create a token or display an error when the form is submitted.
 var form = document.getElementById('payment-form');
 form.addEventListener('submit', function(event) {
   event.preventDefault();
 
-  stripe.createToken(card).then(function(result) {
+  stripe.createToken(cardNumber).then(function(result) {
     if (result.error) {
       // Inform the customer that there was an error.
       var errorElement = document.getElementById('card-errors');
