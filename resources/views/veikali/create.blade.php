@@ -24,10 +24,6 @@
                 </select>
               </div>
             <div class="form-group">
-                {{Form::label('email', 'E-pasts')}}
-                {{Form::text('email', '', ['class' => 'form-control', 'placeholder' => 'E-pasts'])}}
-            </div>
-            <div class="form-group">
                 {{Form::label('address', 'Adrese')}}
                 {{Form::text('address', '', ['class' => 'form-control map-input', 'id' => 'address-input', 'placeholder' => 'Adrese'])}}
                 <input type="hidden" name="address_latitude" id="address-latitude" value="0" />

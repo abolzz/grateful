@@ -56,9 +56,7 @@ class ShopsController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:shops,name,',
             'address' => 'required',
-            'email' => 'required|email|unique:shops,email,'
         ], [
-            'email.unique' => 'Šī e-pasta adrese jau reģistrēta.',
             'name.unique' => 'Šis nosaukums jau reģistrēts.',
        ]);
 
@@ -79,7 +77,7 @@ class ShopsController extends Controller
         $shop = new Shop;
         $shop->name = $request->input('name');
         $shop->address = $request->input('address');
-        $shop->email = $request->input('email');
+        $shop->email = auth()->user()->email;
         $shop->phone = $request->input('phone');
         $shop->type = implode(',', $request->input('type'));
 
@@ -142,7 +140,6 @@ class ShopsController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'address' => 'required',
-            'email' => 'required',
             'cover_image' => 'image|max:1999'
         ]);
 
@@ -163,11 +160,8 @@ class ShopsController extends Controller
         $shop = Shop::find($id);
         $shop->name = $request->input('name');
         $shop->address = $request->input('address');
-        $shop->email = $request->input('email');
         $shop->phone = $request->input('phone');
-        // $type = $request->input('type');
-
-        $shop->type = json_encode(input('type'));
+        $shop->type = implode(',', $request->input('type'));
 
         if($request->hasFile('cover_image')) {
             // Delete the old image
@@ -175,7 +169,7 @@ class ShopsController extends Controller
             // and upload the new one
             $shop->cover_image = $cover_image_id;
         } else {
-            $shop->cover_image = "image-placeholder_rrc5fk.jpg";
+            $shop->cover_image = $shop->cover_image;
         }
         if($request->hasFile('logo_image')) {
             // Delete the old image
@@ -183,7 +177,7 @@ class ShopsController extends Controller
             // and upload the new one
             $shop->logo_image = $logo_image_id;
         } else {
-            $shop->logo_image = "image-placeholder_rrc5fk.jpg";
+            $shop->logo_image = $shop->logo_image;
         }
         $shop->save();
 

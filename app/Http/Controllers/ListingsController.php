@@ -55,15 +55,14 @@ class ListingsController extends Controller
             'description' => 'required',
             'quantity' => 'required|integer|between:1,10',
             'price' => 'required|integer|min:1',
-            'pickup_time' => 'required'
+            // 'pickup_time' => 'required'
         ],
         ['listing_name.required' => 'Lūdzu ievadiet piedāvājuma nosaukumu',
          'description.required' => 'Lūdzu ievadiet aprakstu',
          'quantity.required' => 'Lūdzu ievadiet daudzumu',
          'quantity.between' => 'Daudzumam jābūt no 1 līdz 10',
          'price.required' => 'Lūdzu ievadiet cenu',
-         'price.min' => 'Cena nevar būt mazāka par 1€',
-         'pickup_time.required' => 'Lūdzu ievadiet saņemšanas laiku']);
+         'price.min' => 'Cena nevar būt mazāka par 1€']);
 
         // Handle file upload
         // if($request->hasFile('cover_image')) {
@@ -86,7 +85,7 @@ class ListingsController extends Controller
         $listing->description = $request->input('description');
         $listing->price = $request->input('price');
         $listing->quantity = $request->input('quantity');
-        $listing->pickup_time = $request->input('pickup_time');
+        // $listing->pickup_time = $request->input('pickup_time');
         $listing->lister_name = $request->input('lister_name');
         // $shop->cover_image = $filenameToStore;
         $listing->user_id = auth()->user()->id;

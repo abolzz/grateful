@@ -9,7 +9,7 @@
               <path fill-rule="evenodd" d="M4.5 8a.5.5 0 0 1 .5-.5h6.5a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5z"/>
             </svg>
         </a>
-        <h1>{{$shop->name}}</h1>
+        <h1 class="">{{$shop->name}}</h1>
     </div>
 </div>
 @endsection
@@ -27,11 +27,17 @@
     <li class="list-group-item col-12 listing mb-4 border-0 p-0">
                     <div class="card mx-auto p-0 text-dark d-flex flex-row justify-content-around align-items-center border rounded">
                         <h3 class="shopName mb-0">{{$listing->listing_name}}</h3>
-                        <p class="mb-0">{{$listing->description}}</p>
                         <small>{{$listing->price}}</small>
                         @if(Carbon\Carbon::now()->lt($listing->pickup_time))
                         <small>{{ Carbon\Carbon::parse($listing->pickup_time)->format('H:i') }}</small>
-                        <button onclick="buying({{$listing->id}});" class="btn btn-default">Pirkt</button>
+                            @guest
+                            @else
+                                @if($shop->email != auth()->user()->email)
+                                    <button onclick="buying({{$listing->id}});" class="btn btn-default">Pirkt</button>
+                                @else
+                                    <a href="/piedavajumi/{{$listing->id}}/edit" class="btn btn-default">Labot</a>
+                                @endif
+                            @endguest
                         @else
                         <small>Par vēlu, mēģiniet atkal rīt</small>
                         @endif
@@ -58,7 +64,8 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="../buying.php" method="GET">
+                                        <p class="mb-0 pb-3">{{$listing->description}}</p>
+                                        <form action="../payment.php" method="POST">
                                             <div class="form-group">
                                                 <select class="quantitySelect" name="boughtQuantity">
                                                     <?php for ($i = 1; $i <= $listing['quantity']; $i++) : ?>
@@ -66,9 +73,10 @@
                                                     <?php endfor; ?>
                                                 </select>
                                             </div>
-                                            <input type="hidden" name="lister_name" value="{{$listing->lister_name}}">
+                                            <input type="hidden" name="lister_name" value="{{$listing->user_id}}">
+                                            <input type="hidden" name="price" value="{{$listing->price}}">
                                             <input type="hidden" name="boughtListing" value="{{$listing->listing_name}}">
-                                            <input type="hidden" name="buyer" value="admins@gmail.com">
+                                            <input type="hidden" name="buyer" value="{{Auth::user()->email}}">
                                             <button type="submit" class="btn btn-primary">Turpināt</button>
                                         </form>
                                     </div>
@@ -90,18 +98,18 @@
 <p>Šobrīd nav neviena piedāvājuma...</p>
 @endif
 @if(!Auth::guest())
-@if(Auth::user()->id == $shop->user_id)
-<a href="/veikali/{{$shop->id}}/edit" class="btn btn-default">Labot</a>
-{!!Form::open(['action' => ['ShopsController@destroy', $shop->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
-{{Form::hidden('_method', 'DELETE')}}
-{{Form::submit('Dzēst', ['class' => 'btn btn-danger'])}}
-{!!Form::close()!!}
-@endif
+    @if(Auth::user()->id == $shop->user_id)
+    <a href="/veikali/{{$shop->id}}/edit" class="btn btn-default">Labot veikalu</a>
+    {!!Form::open(['action' => ['ShopsController@destroy', $shop->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
+    {{Form::hidden('_method', 'DELETE')}}
+    {{Form::submit('Dzēst', ['class' => 'btn btn-danger'])}}
+    {!!Form::close()!!}
+    @endif
 @endif
 @endsection
 <script>
     function buying(id) {
-    var buyingModal = '#buyingModal' + id;
-    $(buyingModal).modal('show');
+        var buyingModal = '#buyingModal' + id;
+        $(buyingModal).modal('show');
     }
 </script>

@@ -15,18 +15,14 @@
             </div>
               <div class="form-group">
                 <label for="type">Tips</label>
-                <select multiple class="form-control" id="type" size="5">
-                  <option>Sushi</option>
-                  <option>Pica</option>
-                  <option>Kebabi</option>
-                  <option>Tradicionālā virtuve</option>
-                  <option>Dažādi</option>
+                <select multiple class="form-control" name="type[]" id="type" size="5">
+                  <option @if(str_contains($shop->type, 'Sushi') !== false) selected="selected" @endif>Sushi</option>
+                  <option @if(str_contains($shop->type, 'Pica') !== false) selected="selected" @endif>Pica</option>
+                  <option @if(str_contains($shop->type, 'Kebabi') !== false) selected="selected" @endif>Kebabi</option>
+                  <option @if(str_contains($shop->type, 'Tradicionālā virtuve') !== false) selected="selected" @endif>Tradicionālā virtuve</option>
+                  <option @if(str_contains($shop->type, 'Dažādi') !== false) selected="selected" @endif>Dažādi</option>
                 </select>
               </div>
-            <div class="form-group">
-                {{Form::label('email', 'E-pasts')}}
-                {{Form::text('email', $shop->email, ['class' => 'form-control', 'placeholder' => 'E-pasts'])}}
-            </div>
             <div class="form-group">
                 {{Form::label('address', 'Adrese')}}
                 {{Form::text('address', $shop->address, ['class' => 'form-control map-input', 'id' => 'address-input', 'placeholder' => 'Adrese'])}}
@@ -51,6 +47,7 @@
 @endsection
 
 @section('scripts')
+    <script src="{{asset('js/jQuery.min.js')}}"></script>
     <script type="application/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places&language=lv" async defer></script>
     <script type="application/javascript" src="/js/mapInput.js"></script>
 @stop
