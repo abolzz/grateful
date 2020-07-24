@@ -5,7 +5,7 @@
 	    @foreach ($purchases as $purchase)
 	    @guest
 	    @else
-			@if($purchase->buyer == auth()->user()->email)
+			@if($purchase->buyer_email == auth()->user()->email)
 		    <div>
 		    	<p>Pirkums: {{$purchase->bought_listing}}</p>
 		    	<p>Cena: {{$purchase->price}}</p>
