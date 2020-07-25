@@ -23,7 +23,7 @@
             </div>
             <div class="form-group">
                 {{Form::label('pickup_time', 'Spēkā līdz')}}
-                {{Form::time('pickup_time', \Carbon\Carbon::now()->timezone('Europe/Riga')->format('H:i'),['class' => 'form-control', 'placeholder' => 'Spēkā līdz'])}}
+                <input class="form-control" placeholder="Spēkā līdz" type="time" name="pickup_time" min="<?php echo \Carbon\Carbon::now()->addMinutes(30)->timezone('Europe/Riga')->format('H:i'); ?>" required oninvalid="this.setCustomValidity('Saņemšanas laikam jābūt vismaz 30min no šī brīža.')">
             </div>
                 <input type="hidden" name="lister_name" value="{{ Auth::user()->email }}">
                 {{Form::hidden('_method', 'PUT')}}
