@@ -24,6 +24,11 @@ class PaymentController extends Controller
      */
     public function index()
     {
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+        if ($user->hasVerifiedEmail() != 1) {
+           return redirect('/veikali')->with('error', 'Lai veiktu pirkumus, apstipriniet savu e-pasta adresi.');
+        }
         return view('payment');
     }
 
