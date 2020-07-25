@@ -7,6 +7,9 @@ require_once('models/Purchase.php');
 require_once('../vendor/stripe/stripe-php/init.php');
 \Stripe\Stripe::setApiKey(getenv('STRIPE_API_KEY'));
 
+ini_set('display_errors',1);
+error_reporting(E_ALL);
+
 // Sanitize POST array
 $POST = filter_var_array($_POST, FILTER_SANITIZE_STRING);
 

@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-@guest
-<script type="text/javascript">window.location = "/";</script>
-@else
 <form action="/charge.php" method="post" id="payment-form" class="container my-3">
   @csrf
   <div class="row">
@@ -58,7 +55,6 @@
                                 </div>
                             </div>
                         </div>
-@endguest
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://js.stripe.com/v3/"></script>
