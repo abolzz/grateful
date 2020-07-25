@@ -23,5 +23,8 @@ Auth::routes(['verify' => true]);
 
 Route::get('/dashboard', 'DashboardController@index');
 
+Route::post('/payment', 'PaymentController@index');
+Route::get('/payment', 'PaymentController@show');
+
 Route::get('profils', 'ChangePasswordController@index');
 Route::post('profils', 'ChangePasswordController@store')->name('change.password');

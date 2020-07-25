@@ -20,19 +20,24 @@ $bought_listing = $POST['listing'];
 $email = $POST['email'];
 $token = $POST['stripeToken'];
 
-// Create Customer in Stripe
-$customer = \Stripe\Customer::create(array(
-	"email" => $email,
-	"source" => $token
-));
-
-// Charge Customer
-$charge = \Stripe\Charge::create(array(
-	"amount" => $price,
-	"currency" => "eur",
-	"description" => $bought_listing,
-	"customer" => $customer->id
-));
+try {
+	// Create Customer in Stripe
+	$customer = \Stripe\Customer::create(array(
+		"email" => $email,
+		"source" => $token
+	));
+	// Try to Charge Customer or catch errors
+	$charge = \Stripe\Charge::create(array(
+		"amount" => $price,
+		"currency" => "eur",
+		"description" => $bought_listing,
+		"customer" => $customer->id
+	));
+} catch (Exception $e) {    
+	$error = $e->getMessage();
+	echo $error;
+	exit();
+}
 
 // print_r($charge);
 
@@ -68,6 +73,7 @@ $purchase = new Purchase();
 $purchase->addPurchase($purchaseData);
 
 // Redirect to success
-header('Location: success.php?tid='.$charge->id.'&product='.$charge->description);
+// header('Location: success.php?tid='.$charge->id.'&product='.$charge->description);
+echo "Paldies par pirkumu! Pirkuma kods: $purchase_key";
 
 ?>

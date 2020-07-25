@@ -16,7 +16,7 @@
 </head>
 <body>
 
-	<h1>Thanks for buying!</h1>
+	<h1>Paldies par pirkumu!</h1>
 	<p></p>
 
 </body>

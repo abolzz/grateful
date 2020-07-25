@@ -65,7 +65,8 @@
                                     </div>
                                     <div class="modal-body">
                                         <p class="mb-0 pb-3">{{$listing->description}}</p>
-                                        <form action="../payment.php" method="POST">
+                                        <form action="/payment" method="POST">
+                                            @csrf
                                             <div class="form-group">
                                                 <select class="quantitySelect" name="boughtQuantity">
                                                     <?php for ($i = 1; $i <= $listing['quantity']; $i++) : ?>
