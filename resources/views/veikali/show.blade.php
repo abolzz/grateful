@@ -44,24 +44,28 @@
 @if(count($listings) > 0)
 <ul class="list-group">
     @foreach ($listings as $listing)
-    @if($listing->quantity > 0)
+    @if($listing->quantity > 0 and Carbon\Carbon::now()->lt($listing->pickup_time))
     <li class="list-group-item col-12 listing mb-4 border-0 p-0">
                     <div class="card mx-auto p-0 text-dark d-flex flex-row justify-content-around align-items-center border rounded">
-                        <h3 class="shopName mb-0">{{$listing->listing_name}}</h3>
-                        <small>{{$listing->price}}</small>
-                        @if(Carbon\Carbon::now()->lt($listing->pickup_time))
-                        <small>{{ Carbon\Carbon::parse($listing->pickup_time)->format('H:i') }}</small>
+                        <h3 class="shopName mb-0 w-25">{{$listing->listing_name}}</h3>
+                        <div class="w-25 d-flex justify-content-between">
+                            <small>{{$listing->price}}</small>
+                            <small>
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>
+                                  <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+                                </svg>
+                                {{ Carbon\Carbon::parse($listing->pickup_time)->format('H:i') }}
+                            </small>
+                        </div>
                             @guest
                             @else
                                 @if($shop->email != auth()->user()->email)
-                                    <button onclick="buying({{$listing->id}});" class="btn btn-default">Pirkt</button>
+                                    <button onclick="buying({{$listing->id}});" class="btn btn-default w-25">Pirkt</button>
                                 @else
-                                    <a href="/piedavajumi/{{$listing->id}}/edit" class="btn btn-default">Labot</a>
+                                    <a href="/piedavajumi/{{$listing->id}}/edit" class="btn btn-default w-25">Labot</a>
                                 @endif
                             @endguest
-                        @else
-                        <small>Par vēlu, mēģiniet atkal rīt</small>
-                        @endif
                         <div id="buyingModal{{$listing->id}}" class="modal" tabindex="-1" role="dialog">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -121,8 +125,8 @@
 @endif
 @if(!Auth::guest())
     @if(Auth::user()->id == $shop->user_id)
-    <a href="/veikali/{{$shop->id}}/edit" class="btn btn-default">Labot veikalu</a>
-    {!!Form::open(['action' => ['ShopsController@destroy', $shop->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
+    <a href="/veikali/{{$shop->id}}/edit" class="btn btn-primary mb-1">Labot veikalu</a>
+    {!!Form::open(['action' => ['ShopsController@destroy', $shop->id], 'method' => 'POST', 'class' => 'pull-right mb-2'])!!}
     {{Form::hidden('_method', 'DELETE')}}
     {{Form::submit('Dzēst', ['class' => 'btn btn-danger'])}}
     {!!Form::close()!!}
