@@ -4,7 +4,7 @@
 
     @if(count($shops) > 0)
         <div class="row">
-            <div class="col-6 mx-auto p-3">
+            <div class="col-md-6 col-sm-12 mx-auto p-3">
                 <input id="search" class="form-control align-self-center" type="search" name="search" placeholder="Meklēt">
             </div> 
         </div>
