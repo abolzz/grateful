@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Grateful\Shop;
 use Grateful\Listing;
+use Grateful\Like;
 use DB;
 use JD\Cloudder\Facades\Cloudder;
 
@@ -107,7 +108,8 @@ class ShopsController extends Controller
     {
         $shop = Shop::find($id);
         $listings = Listing::all()->where('lister_name', $shop->email);
-        return view('veikali.show')->with(['shop'=>$shop,'listings'=>$listings]);
+        $likes = Like::all()->where('liked_shop', $shop->id);
+        return view('veikali.show')->with(['shop'=>$shop,'listings'=>$listings,'likes'=>$likes]);
     }
 
     /**

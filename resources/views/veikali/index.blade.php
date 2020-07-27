@@ -12,7 +12,7 @@
             @foreach ($shops as $shop)
                 <li class="shop list-group-item col-md-4 col-sm-6 col-xs-12 mb-4 border-0 p-0 bg-transparent" data-mh="info">
                     <a href="/veikali/{{$shop->id}}" class="card col-11 mx-auto p-0 text-dark btn">
-                      <div class="shop-cover-image d-flex justify-content-center align-items-center" style="background-image: url(https://res.cloudinary.com/hzdsckd6b/image/upload/v1594144521/{{$shop->cover_image}});"><img src="https://res.cloudinary.com/hzdsckd6b/image/upload/v1594483516/{{$shop->logo_image}}" class="shop-logo" alt="{{$shop->name}} logo"></div>
+                      <div class="shop-cover-image d-flex justify-content-center align-items-center" style="background-image: url(https://res.cloudinary.com/hzdsckd6b/image/upload/v1594144521/{{$shop->cover_image}});"><img src="https://res.cloudinary.com/hzdsckd6b/image/upload/v1594483516/{{$shop->logo_image}}" class="shop-logo position-absolute" alt="{{$shop->name}} logo"></div>
                       <div class="card-body text-left py-3">
                         <h5 class="card-title mb-2">{{$shop->name}}</h5>
                         <p class="card-text mb-1">{{substr($shop->address, 0, strpos($shop->address, ','))}}</p>

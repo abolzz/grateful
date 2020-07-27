@@ -30,3 +30,6 @@ Route::post('profils', 'ChangePasswordController@store')->name('change.password'
 
 Route::get('/fb-login', 'SocialAuthFacebookController@redirect');
 Route::get('/#', 'SocialAuthFacebookController@callback');
+
+Route::get('/like/{id}', 'LikesController@index');
+Route::get('/unlike/{id}/{liker_id}', 'LikesController@unlike');
