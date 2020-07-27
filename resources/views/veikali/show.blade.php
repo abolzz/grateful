@@ -4,12 +4,10 @@
     <img class="shop-logo position-absolute" src="https://res.cloudinary.com/hzdsckd6b/image/upload/v1594483516/{{$shop->logo_image}}" alt="{{$shop->name}} logo">
     <div class="container h-100 d-flex flex-column justify-content-between" >
         <div class="h-25 d-flex justify-content-between flex-row-reverse align-items-center text-white">
-                @guest
-                @else
                     @if($shop->likes < 1)
-                        <a @if(Auth::user()->id != $shop->user_id)
+                        <a @guest @else @if(Auth::user()->id != $shop->user_id)
                             href="/like/{{$shop->id}}"
-                            @endif class="btn text-white d-flex align-items-end">
+                            @endif @endguest class="btn text-white d-flex align-items-end">
                             <svg class="like-btn" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-heart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                               <path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
                             </svg>
@@ -18,9 +16,9 @@
                     @endif
                     @foreach($likes as $like)
                         @if(($like->liked_from == Auth::user()->id) < 1)
-                        <a @if(Auth::user()->id != $shop->user_id)
+                        <a @guest @else @if(Auth::user()->id != $shop->user_id)
                             href="like/{{$shop->id}}"
-                            @endif class="btn text-white d-flex align-items-end">
+                            @endif @endguest class="btn text-white d-flex align-items-end">
                             <svg class="like-btn" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-heart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                               <path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
                             </svg>
@@ -28,9 +26,9 @@
                         </a>
                         @break
                         @else
-                        <a @if(Auth::user()->id != $shop->user_id)
+                        <a @guest @else @if(Auth::user()->id != $shop->user_id)
                             href="{{url('unlike', [$shop->id, Auth::user()->id])}}"
-                            @endif class="btn text-white d-flex align-items-end">
+                            @endif @endguest class="btn text-white d-flex align-items-end">
                             <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                               <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                             </svg>
@@ -39,7 +37,6 @@
                         @break
                         @endif
                     @endforeach
-                @endguest
             <a href="/veikali" class="text-white">
                 <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-arrow-left-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" d="M7.854 4.646a.5.5 0 0 1 0 .708L5.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z"/>
