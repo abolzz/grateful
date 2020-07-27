@@ -30,9 +30,8 @@ class ShopsController extends Controller
      */
     public function index()
     {
-        // $shops = Shop::all();
 
-        $shops = Shop::orderBy('id', 'desc')->paginate(6);
+        $shops = Shop::orderBy('likes', 'desc')->paginate(6);
         return view('veikali.index')->with('shops', $shops);
     }
 

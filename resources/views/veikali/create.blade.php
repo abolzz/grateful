@@ -3,6 +3,7 @@
 @section('content')
 
     <div class="row my-3">
+        <div class="col-8 mx-auto">
         <h1>Pievienot veikalu</h1>
         {!! Form::open(['action' => 'ShopsController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'shop-form']) !!}
             <div class="form-group">
@@ -39,6 +40,7 @@
             </div>
             {{Form::submit('Izveidot', ['class'=>'btn btn-primary'])}}
         {!! Form::close() !!}
+        </div>
     </div>
 @endsection
 
