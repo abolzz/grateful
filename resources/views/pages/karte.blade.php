@@ -1,9 +1,8 @@
 @extends('layouts.app')
         
 @section('content')
-    <h1>Karte</h1>
-    <div id="address-map-container" style="width:100%;height:800px;margin-bottom:20px;">
-        <div style="width: 100%; height: 100%" id="address-map"></div>
+    <div id="address-map-container" class="my-3 w-100" style="height:800px">
+        <div class="w-100 h-100" id="address-map"></div>
     </div>
 @endsection
 

@@ -3,22 +3,43 @@
 <div class="jumbotron jumbotron-fluid p-0 shop-cover-image" style="background-image: url(https://res.cloudinary.com/hzdsckd6b/image/upload/v1594144521/{{$shop->cover_image}});">
     <img class="shop-logo position-absolute" src="https://res.cloudinary.com/hzdsckd6b/image/upload/v1594483516/{{$shop->logo_image}}" alt="{{$shop->name}} logo">
     <div class="container h-100 d-flex flex-column justify-content-between" >
-        <a href="/veikali" class="text-dark">
+        <a href="/veikali" class="text-white">
             <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-arrow-left-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" d="M7.854 4.646a.5.5 0 0 1 0 .708L5.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z"/>
               <path fill-rule="evenodd" d="M4.5 8a.5.5 0 0 1 .5-.5h6.5a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5z"/>
             </svg>
         </a>
-        <h1 class="">{{$shop->name}}</h1>
+        <div class="h-75 d-flex flex-column justify-content-end py-2">
+            <h1 class="text-white">{{$shop->name}}</h1>
+            <div>
+                <?php $myArray = explode(',', $shop->type);
+                    foreach($myArray as $my_Array) {
+                ?>
+                    <small class="border border-dark rounded p-1 bg-dark text-white"><?php echo $my_Array ?></small>
+                <?php
+                }?>
+            </div>
+            <div class="d-flex align-items-center">
+                <p class="text-white py-2 mb-0 mr-4">
+                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-geo" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M11 4a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                      <path d="M7.5 4h1v9a.5.5 0 0 1-1 0V4z"/>
+                      <path fill-rule="evenodd" d="M6.489 12.095a.5.5 0 0 1-.383.594c-.565.123-1.003.292-1.286.472-.302.192-.32.321-.32.339 0 .013.005.085.146.21.14.124.372.26.701.382.655.246 1.593.408 2.653.408s1.998-.162 2.653-.408c.329-.123.56-.258.701-.382.14-.125.146-.197.146-.21 0-.018-.018-.147-.32-.339-.283-.18-.721-.35-1.286-.472a.5.5 0 1 1 .212-.977c.63.137 1.193.34 1.61.606.4.253.784.645.784 1.182 0 .402-.219.724-.483.958-.264.235-.618.423-1.013.57-.793.298-1.855.472-3.004.472s-2.21-.174-3.004-.471c-.395-.148-.749-.336-1.013-.571-.264-.234-.483-.556-.483-.958 0-.537.384-.929.783-1.182.418-.266.98-.47 1.611-.606a.5.5 0 0 1 .595.383z"/>
+                    </svg>
+                    <a class="text-white" href="/karte">{{strtok($shop->address, ',')}}</a>
+                </p>
+                <p class="text-white mb-0">
+                    <svg class="mr-1" width="1.25em" height="1.25em" viewBox="0 0 16 16" class="bi bi-envelope" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+                    </svg>
+                    <a class="text-white" href="mailto:{{$shop->email}}">{{$shop->email}}</a>
+                </p>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
 @section('content')
-<div class="col-md-8 col-sm-8">
-    <p>{{strtok($shop->address, ',')}}</p>
-    <small>{{$shop->type}}</small>
-    <small>{{$shop->email}}</small>
-</div>
 <h2>Piedāvājumi</h2>
 @if(count($listings) > 0)
 <ul class="list-group">

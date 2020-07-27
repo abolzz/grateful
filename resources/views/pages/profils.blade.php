@@ -1,8 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="row justify-content-center">
-	<div class="col-md-8 mb-2">
-		<h1>Profils</h1>
+	<div class="col-md-8 my-3">
 		<div class="card">
 			<div class="card-header">Paroles maiņa</div>
 			<div class="card-body">
