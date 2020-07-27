@@ -28,3 +28,6 @@ Route::get('/payment', 'PaymentController@show');
 
 Route::get('profils', 'ChangePasswordController@index');
 Route::post('profils', 'ChangePasswordController@store')->name('change.password');
+
+Route::get('/fb-login', 'SocialAuthFacebookController@redirect');
+Route::get('/veikali', 'SocialAuthFacebookController@callback');
