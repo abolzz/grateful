@@ -108,9 +108,12 @@
     @endif
 @endif
 @endsection
-<script>
-    function buying(id) {
-        var buyingModal = '#buyingModal' + id;
-        $(buyingModal).modal('show');
-    }
-</script>
+
+@section('scripts')
+    <script>
+        function buying(id) {
+            var buyingModal = '#buyingModal' + id;
+            $(buyingModal).modal('show');
+        }
+    </script>
+@stop

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="row my-3">
         <h1>Pievienot veikalu</h1>
         {!! Form::open(['action' => 'ShopsController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'class' => 'shop-form']) !!}
             <div class="form-group">
@@ -29,23 +29,24 @@
                 <input type="hidden" name="address_latitude" id="address-latitude" value="0" />
                 <input type="hidden" name="address_longitude" id="address-longitude" value="0" />
             </div>
-            <div id="address-map-container" style="width:100%;height:400px; ">
-                <div style="width: 100%; height: 100%" id="address-map"></div>
-            </div>
             <div class="form-group">
-                {{Form::label('cover_image', 'Veikala titulbilde')}}
+                {{Form::label('cover_image', 'Veikala titulbilde')}}<br>
                 {{Form::file('cover_image')}}
             </div>
             <div class="form-group">
-                {{Form::label('logo_image', 'Veikala logotips')}}
+                {{Form::label('logo_image', 'Veikala logotips')}}<br>
                 {{Form::file('logo_image')}}
             </div>
-            {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
+            {{Form::submit('Izveidot', ['class'=>'btn btn-primary'])}}
         {!! Form::close() !!}
     </div>
 @endsection
 
 @section('scripts')
-    <script type="application/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places&callback=initialize&language=lv" async defer></script>
+    <script type="application/javascript" src="/js/jQuery.min.js"></script>
+    <script type="application/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places&callback=initialize&language=lv"></script>
     <script type="application/javascript" src="/js/mapInput.js"></script>
+    <script type="text/javascript">
+        initialize();
+    </script>
 @stop

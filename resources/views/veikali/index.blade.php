@@ -32,16 +32,17 @@
     @endif
 @endsection
 
-<script src="{{asset('js/jQuery.min.js')}}"></script>
-<script type="text/javascript">
-
-$(document).ready(function(){
-  $("#search").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    console.log(value);
-    $("#total_records li").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
+@section('scripts')
+    <script type="application/javascript" src="/js/jQuery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+          $("#search").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            console.log(value);
+            $("#total_records li").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+          });
+        });
+    </script>
+@stop

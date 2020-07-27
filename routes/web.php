@@ -14,7 +14,6 @@
 Route::get('/', 'ShopsController@index');
 Route::get('/karte', 'PagesController@map');
 Route::get('/pirkumi', 'PagesController@purchases');
-// Route::get('/profils', 'PagesController@profile');
 
 Route::resource('piedavajumi', 'ListingsController');
 Route::resource('veikali', 'ShopsController');
@@ -30,4 +29,4 @@ Route::get('profils', 'ChangePasswordController@index');
 Route::post('profils', 'ChangePasswordController@store')->name('change.password');
 
 Route::get('/fb-login', 'SocialAuthFacebookController@redirect');
-Route::get('/veikali', 'SocialAuthFacebookController@callback');
+Route::get('/#', 'SocialAuthFacebookController@callback');

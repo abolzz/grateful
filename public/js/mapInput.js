@@ -20,30 +20,16 @@ function initialize() {
         const latitude = parseFloat(document.getElementById(fieldKey + "-latitude").value) || -33.8688;
         const longitude = parseFloat(document.getElementById(fieldKey + "-longitude").value) || 151.2195;
 
-        const map = new google.maps.Map(document.getElementById(fieldKey + '-map'), {
-            center: {lat: latitude, lng: longitude},
-            zoom: 13
-        });
-        const marker = new google.maps.Marker({
-            map: map,
-            position: {lat: latitude, lng: longitude},
-        });
-
-        marker.setVisible(isEdit);
-
         const autocomplete = new google.maps.places.Autocomplete(input);
         autocomplete.key = fieldKey;
-        autocompletes.push({input: input, map: map, marker: marker, autocomplete: autocomplete});
+        autocompletes.push({input: input, autocomplete: autocomplete});
     }
 
     for (let i = 0; i < autocompletes.length; i++) {
         const input = autocompletes[i].input;
         const autocomplete = autocompletes[i].autocomplete;
-        const map = autocompletes[i].map;
-        const marker = autocompletes[i].marker;
 
         google.maps.event.addListener(autocomplete, 'place_changed', function () {
-            marker.setVisible(false);
             const place = autocomplete.getPlace();
 
             geocoder.geocode({'placeId': place.place_id}, function (results, status) {
@@ -59,15 +45,6 @@ function initialize() {
                 input.value = "";
                 return;
             }
-
-            if (place.geometry.viewport) {
-                map.fitBounds(place.geometry.viewport);
-            } else {
-                map.setCenter(place.geometry.location);
-                map.setZoom(17);
-            }
-            marker.setPosition(place.geometry.location);
-            marker.setVisible(true);
 
         });
     }
