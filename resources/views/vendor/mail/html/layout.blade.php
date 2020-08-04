@@ -6,9 +6,6 @@
 </head>
 <body>
     <style>
-            body {
-                color: #000 !important;
-            }
         @media only screen and (max-width: 600px) {
             .inner-body {
                 width: 100% !important;
