@@ -6,6 +6,9 @@
 </head>
 <body>
     <style>
+            body {
+                color: #000 !important;
+            }
         @media only screen and (max-width: 600px) {
             .inner-body {
                 width: 100% !important;
@@ -19,7 +22,6 @@
         @media only screen and (max-width: 500px) {
             .button {
                 width: 100% !important;
-                color: #000000;
             }
         }
     </style>
