@@ -44,9 +44,8 @@ class PaymentController extends Controller
         return redirect('/veikali');
     }
 
-    public function sendPurchaseMail(Request $request)
+    public function sendPurchaseMail($buyer)
     {
-        $buyer = $request->input("buyer");
         Mail::to($buyer)->send(new PurchaseMail);
     }
 }

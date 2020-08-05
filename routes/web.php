@@ -11,9 +11,6 @@
 |
 */
 
-Use Grateful\Mail\PurchaseMail;
-Use Illuminate\Support\Facades\Mail;
-
 Route::get('/', 'ShopsController@index');
 Route::get('/karte', 'PagesController@map');
 Route::get('/pirkumi', 'PagesController@purchases');
