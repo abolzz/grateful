@@ -11,6 +11,9 @@
 |
 */
 
+Use Grateful\Mail\PurchaseMail;
+Use Illuminate\Support\Facades\Mail;
+
 Route::get('/', 'ShopsController@index');
 Route::get('/karte', 'PagesController@map');
 Route::get('/pirkumi', 'PagesController@purchases');
@@ -33,3 +36,10 @@ Route::get('/#', 'SocialAuthFacebookController@callback');
 
 Route::get('/like/{id}', 'LikesController@index');
 Route::get('/unlike/{id}/{liker_id}', 'LikesController@unlike');
+
+Route::get('/purchase', function () {
+
+	Mail::to(app('request')->input('buyer'));
+
+	return new PurchaseMail();
+});

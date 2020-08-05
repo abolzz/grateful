@@ -7,7 +7,6 @@
     @endslot
 
     {{-- Body --}}
-    <p>Yooo</p>
     {{ $slot }}
 
     {{-- Subcopy --}}
