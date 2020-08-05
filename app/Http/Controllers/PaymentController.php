@@ -4,6 +4,8 @@ namespace Grateful\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Grateful\User;
+Use Grateful\Mail\PurchaseMail;
+use Illuminate\Support\Facades\Mail;
 
 class PaymentController extends Controller
 {
@@ -40,5 +42,11 @@ class PaymentController extends Controller
     public function show()
     {
         return redirect('/veikali');
+    }
+
+    public function sendPurchaseMail(Request $request)
+    {
+        $buyer = $request->input("buyer");
+        Mail::to($buyer)->send(new PurchaseMail);
     }
 }
