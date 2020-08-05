@@ -33,5 +33,3 @@ Route::get('/#', 'SocialAuthFacebookController@callback');
 
 Route::get('/like/{id}', 'LikesController@index');
 Route::get('/unlike/{id}/{liker_id}', 'LikesController@unlike');
-
-Route::get('/purchase/{buyer}', 'PaymentController@sendPurchaseMail');

@@ -76,7 +76,7 @@ $purchase = new Purchase();
 $purchase->addPurchase($purchaseData);
 
 // Redirect to success
-curl_init("/purchase?purchase_key='.$purchase_key.'/'.$buyer");
+mail($buyer,"Paldies par pirkumu!",$purchase_key);
 // header('Location: /purchase?purchase_key='.$purchase_key.'/'.$buyer);
 // echo "Paldies par pirkumu! Pirkuma kods: $purchase_key";
 
