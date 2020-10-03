@@ -8,7 +8,9 @@
         <title>{{ config('app.name', 'Grateful') }}</title>
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
-        <!-- <script src="/js/app.js" defer></script> -->
+        <script type="application/javascript" src="/js/jQuery.min.js"></script>
+        <script type="application/javascript" src="/js/lazyload.min.js"></script>
+        <script src="{{ asset('js/matchHeight.js') }}" defer></script>
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
