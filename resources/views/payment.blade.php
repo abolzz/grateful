@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row my-3">
-  <form action="/charge.php" method="post" id="payment-form">
+  <form action="/charge.php" method="post" id="payment-form" class="w-100">
     @csrf
     
       <?php
