@@ -17,7 +17,7 @@
       ?>
       <div class="col-12 col-md-6 mx-auto">
         <p><?=$bought_listing?></p>
-        <p>Pirkuma summa: <?=$POST['price']?>EUR</p>
+        <p>Pirkuma summa: <?=$price*$bought_quantity?>EUR</p>
 
         <input type="hidden" name="lister_name" value="<?=$lister_name?>">
         <input type="hidden" name="price" value="<?=$price?>">
