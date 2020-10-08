@@ -38,7 +38,7 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     public function shops() {
-        return $this->belongsTo('Grateful\User');
+        return $this->hasMany('Grateful\Shop');
     }
 
     public function listings() {
