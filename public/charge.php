@@ -82,11 +82,6 @@ $purchase = new Purchase();
 // Add Purchase To DB
 $purchase->addPurchase($purchaseData);
 
-// Redirect to success
-// mail($buyer,"Paldies par pirkumu!",$purchase_key);
-// header('Location: /purchase?purchase_key='.$purchase_key.'/'.$buyer);
-// echo "Paldies par pirkumu! Pirkuma kods: $purchase_key";
-
 $mail = new PHPMailer();
 
 // Settings
@@ -95,26 +90,26 @@ $mail->CharSet = 'UTF-8';
 
 $mail->Host       = "smtp.gmail.com"; // SMTP server example
 $mail->SMTPSecure = 'tls';
-$mail->SMTPDebug  = 1;                     // enables SMTP debug information (for testing)
+$mail->SMTPDebug  = 2;                     // enables SMTP debug information (for testing)
 $mail->SMTPAuth   = true;                  // enable SMTP authentication
 $mail->Port       = 587;                    // set the SMTP port for the GMAIL server
 $mail->Username   = "abolzzy@gmail.com"; // SMTP account username example
-$mail->Password   = "dxztxxjkkitgmigs";        // SMTP account password example
+$mail->Password   = getenv('MAIL_PASSWORD');        // SMTP account password example
 $mail->SetFrom("abolzzy@gmail.com");
 
 // Content
 $mail->isHTML(true);                              // Set email format to HTML
 $mail->AddAddress($email);
-$mail->Subject = 'Here is the subject';
-$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+$mail->Subject = 'Grateful pirkums';
+$mail->Body    = 'Paldies par pirkumu! Pirkuma kods: '.$purchase_key;
+$mail->AltBody = 'Paldies par pirkumu! Pirkuma kods: '.$purchase_key;
 
-$mail->send();
-
- if(!$mail->Send()) {
-    echo "Mailer Error: " . $mail->ErrorInfo;
- } else {
-    echo "Message has been sent";
- }
+if(!$mail->Send()) {
+   echo "Mailer Error: " . $mail->ErrorInfo;
+} else {
+   // Redirect to success
+header('Location: /purchase?purchase_key='.$purchase_key.'/'.$buyer);
+echo "Paldies par pirkumu! Pirkuma kods: $purchase_key";
+}
 
 ?>
