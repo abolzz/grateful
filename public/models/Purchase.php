@@ -20,6 +20,7 @@
       $this->db->bind(':purchase_key', $data['purchase_key']);
       $this->db->bind(':status', $data['status']);
       $this->db->bind(':customer_id', $data['customer_id']);
+      $this->db->bind(':price', $data['price']);
 
       // Execute
       if($this->db->execute()) {
