@@ -76,8 +76,29 @@ $purchase = new Purchase();
 $purchase->addPurchase($purchaseData);
 
 // Redirect to success
-mail($buyer,"Paldies par pirkumu!",$purchase_key);
+// mail($buyer,"Paldies par pirkumu!",$purchase_key);
 // header('Location: /purchase?purchase_key='.$purchase_key.'/'.$buyer);
 // echo "Paldies par pirkumu! Pirkuma kods: $purchase_key";
+
+$mail = new PHPMailer();
+
+// Settings
+$mail->IsSMTP();
+$mail->CharSet = 'UTF-8';
+
+$mail->Host       = "smtp.gmail.com"; // SMTP server example
+$mail->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
+$mail->SMTPAuth   = true;                  // enable SMTP authentication
+$mail->Port       = 25;                    // set the SMTP port for the GMAIL server
+$mail->Username   = "abolzzy@gmail.com"; // SMTP account username example
+$mail->Password   = "dxztxxjkkitgmigs";        // SMTP account password example
+
+// Content
+$mail->isHTML(true);                                  // Set email format to HTML
+$mail->Subject = 'Here is the subject';
+$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+$mail->send();
 
 ?>
