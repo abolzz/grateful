@@ -90,7 +90,7 @@ $mail->CharSet = 'UTF-8';
 
 $mail->Host       = "smtp.gmail.com"; // SMTP server example
 $mail->SMTPSecure = 'tls';
-$mail->SMTPDebug  = 2;                     // enables SMTP debug information (for testing)
+$mail->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
 $mail->SMTPAuth   = true;                  // enable SMTP authentication
 $mail->Port       = 587;                    // set the SMTP port for the GMAIL server
 $mail->Username   = getenv('MAIL_USERNAME'); // SMTP account username example
@@ -107,8 +107,8 @@ $mail->AltBody = 'Paldies par pirkumu! Pirkuma kods: '.$purchase_key;
 if(!$mail->Send()) {
    echo "Mailer Error: " . $mail->ErrorInfo;
 } else {
-   // Redirect to success
-echo "Paldies par pirkumu! Pirkuma kods: $purchase_key";
+    // Redirect to success
+	echo "Paldies par pirkumu! Pirkuma kods: $purchase_key";
 }
 
 ?>
