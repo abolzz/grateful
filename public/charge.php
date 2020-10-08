@@ -10,6 +10,10 @@ require_once('../vendor/stripe/stripe-php/init.php');
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+require '../vendor/phpmailer/phpmailer/src/Exception.php';
+require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require '../vendor/phpmailer/phpmailer/src/SMTP.php';
+
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
