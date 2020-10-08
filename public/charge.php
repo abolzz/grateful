@@ -73,7 +73,8 @@ $purchaseData = [
   'bought_quantity' => $bought_quantity,
   'purchase_key' => $purchase_key,
   'status' => $charge->status,
-  'customer_id' => $charge->id
+  'customer_id' => $charge->id,
+  'price' => $price * $bought_quantity
 ];
 
 // Instantiate Purchase
