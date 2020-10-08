@@ -100,6 +100,7 @@ $mail->SMTPAuth   = true;                  // enable SMTP authentication
 $mail->Port       = 465;                    // set the SMTP port for the GMAIL server
 $mail->Username   = "abolzzy@gmail.com"; // SMTP account username example
 $mail->Password   = "dxztxxjkkitgmigs";        // SMTP account password example
+$mail->SetFrom("abolzzy@gmail.com");
 
 // Content
 $mail->isHTML(true);                              // Set email format to HTML
