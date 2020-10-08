@@ -18,7 +18,7 @@
                         <p class="card-text mb-1">{{substr($shop->address, 0, strpos($shop->address, ','))}}</p>
                         <?php $myArray = explode(',', $shop->type);
                         foreach($myArray as $my_Array){
-                         ?><small class="border border-dark rounded p-1 bg-dark text-white"><?php echo $my_Array ?></small>
+                         ?><small class="border-dark rounded p-1 bg-dark text-white"><?php echo $my_Array ?></small>
                         <?php
                         }?>
                       </div>

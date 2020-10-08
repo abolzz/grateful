@@ -2,7 +2,7 @@
 @section('jumbotron')
 <div class="jumbotron jumbotron-fluid p-0 shop-cover-image" style="background-image: url(https://res.cloudinary.com/hzdsckd6b/image/upload/v1594144521/{{$shop->cover_image}});">
     <img class="shop-logo position-absolute" src="https://res.cloudinary.com/hzdsckd6b/image/upload/v1594483516/{{$shop->logo_image}}" alt="{{$shop->name}} logo">
-    <div class="container h-100 d-flex flex-column justify-content-between" >
+    <div class="container h-100 d-flex flex-column justify-content-between position-relative">
         <div class="h-25 d-flex justify-content-between flex-row-reverse align-items-center text-white">
                     @if($shop->likes < 1)
                         <a @guest @else @if(Auth::user()->id != $shop->user_id)
@@ -84,7 +84,7 @@
                     <div class="card mx-auto p-0 text-dark d-flex flex-row justify-content-around align-items-center border rounded">
                         <h3 class="shopName mb-0 w-25">{{$listing->listing_name}}</h3>
                         <div class="w-25 d-flex justify-content-between">
-                            <small>{{$listing->price}}</small>
+                            <small>€ {{$listing->price}}</small>
                             <small>
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                   <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z"/>

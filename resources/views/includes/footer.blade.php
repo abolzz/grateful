@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="page-footer font-small bg-secondary">
+<footer class="page-footer font-small bg-dark">
 
   <!-- Footer Links -->
   <div class="container">
@@ -10,7 +10,7 @@
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="text-uppercase font-weight-bold">
-          <a href="/veikali">Veikali</a>
+          <a href="/veikali" class="text-white">Veikali</a>
         </h6>
       </div>
       <!-- Grid column -->
@@ -18,7 +18,7 @@
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="text-uppercase font-weight-bold">
-          <a href="/karte">Karte</a>
+          <a href="/karte" class="text-white">Karte</a>
         </h6>
       </div>
       <!-- Grid column -->
@@ -26,7 +26,7 @@
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="text-uppercase font-weight-bold">
-          <a href="/pirkumi">Pirkumi</a>
+          <a href="/pirkumi" class="text-white">Pirkumi</a>
         </h6>
       </div>
       <!-- Grid column -->
@@ -34,7 +34,7 @@
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="text-uppercase font-weight-bold">
-          <a href="/profils">Profils</a>
+          <a href="/profils" class="text-white">Profils</a>
         </h6>
       </div>
       <!-- Grid column -->
@@ -49,13 +49,13 @@
 
     </div>
     <!-- Grid row-->
-    <hr class="rgba-white-light" style="margin: 0 15%;">
+    <hr style="margin: 0 15%;background-color: #fff">
 
     <!-- Grid row-->
     <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
 
       <!-- Grid column -->
-      <div class="col-md-8 col-12 mt-5">
+      <div class="col-md-8 col-12 mt-5 text-white">
         <p style="line-height: 1.7rem">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
           accusantium doloremque laudantium, totam rem
           aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
@@ -66,7 +66,7 @@
 
     </div>
     <!-- Grid row-->
-    <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
+    <hr class="clearfix" style="margin: 10% 15% 5%;background-color: #fff">
 
     <!-- Grid row-->
     <div class="row pb-3">
@@ -78,27 +78,27 @@
 
           <!-- Facebook -->
           <a class="fb-ic">
-            <i class="fab fa-facebook-f fa-lg white-text mr-4"> </i>
+            <i class="fab fa-facebook-f fa-lg text-white mr-4"> </i>
           </a>
           <!-- Twitter -->
           <a class="tw-ic">
-            <i class="fab fa-twitter fa-lg white-text mr-4"> </i>
+            <i class="fab fa-twitter fa-lg text-white mr-4"> </i>
           </a>
           <!-- Google +-->
           <a class="gplus-ic">
-            <i class="fab fa-google-plus-g fa-lg white-text mr-4"> </i>
+            <i class="fab fa-google-plus-g fa-lg text-white mr-4"> </i>
           </a>
           <!--Linkedin -->
           <a class="li-ic">
-            <i class="fab fa-linkedin-in fa-lg white-text mr-4"> </i>
+            <i class="fab fa-linkedin-in fa-lg text-white mr-4"> </i>
           </a>
           <!--Instagram-->
           <a class="ins-ic">
-            <i class="fab fa-instagram fa-lg white-text mr-4"> </i>
+            <i class="fab fa-instagram fa-lg text-white mr-4"> </i>
           </a>
           <!--Pinterest-->
           <a class="pin-ic">
-            <i class="fab fa-pinterest fa-lg white-text"> </i>
+            <i class="fab fa-pinterest fa-lg text-white"> </i>
           </a>
 
         </div>
@@ -113,7 +113,7 @@
   <!-- Footer Links -->
 
   <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2020 Copyright: Grateful</div>
+  <div class="footer-copyright text-center py-3 text-white">© 2020 Copyright: Grateful</div>
   <!-- Copyright -->
 
 </footer>

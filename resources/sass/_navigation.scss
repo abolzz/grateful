@@ -3,12 +3,13 @@
 		 &.navbar-hide {
 		 	bottom: -55px;
 		 }
-		 transition: bottom 0.5s ease;
-		 position: fixed !important;
-		 z-index: 999;
-	   left: 0;
-	   bottom: 0;
-	   width: 100%;
+		box-shadow: -3px 1px 6px 0px #000;
+		transition: bottom 0.5s ease;
+		position: fixed !important;
+		z-index: 999;
+	    left: 0;
+	    bottom: 0;
+	    width: 100%;
 	   .navbar-collapse.show-mobile {
 	   	display: block !important;
 	   }
@@ -31,7 +32,7 @@
 
 @media only screen and (min-width: 768px) {
 	.navbar-nav {
-	  .nav-link {
+	  .nav-link {	
 	  	svg {
 	  		display: none;
 	  	}
