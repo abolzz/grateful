@@ -8,7 +8,7 @@
 
     public function addPurchase($data) {
       // Prepare Query
-      $this->db->query('INSERT INTO purchases (buyer_email, buyer_first_name, buyer_last_name, user_id, bought_listing, bought_quantity, purchase_key, status, customer_id) VALUES(:buyer, :first_name, :last_name, :bought_from, :bought_listing, :bought_quantity, :purchase_key, :status, :customer_id)');
+      $this->db->query('INSERT INTO purchases (buyer_email, buyer_first_name, buyer_last_name, user_id, bought_listing, bought_quantity, purchase_key, status, customer_id) VALUES(:buyer, :first_name, :last_name, :bought_from, :bought_listing, :bought_quantity, :purchase_key, :status, :customer_id, :price)');
 
       // Bind Values
       $this->db->bind(':buyer', $data['buyer']);
