@@ -108,7 +108,6 @@ if(!$mail->Send()) {
    echo "Mailer Error: " . $mail->ErrorInfo;
 } else {
    // Redirect to success
-header('Location: /purchase?purchase_key='.$purchase_key.'/'.$buyer);
 echo "Paldies par pirkumu! Pirkuma kods: $purchase_key";
 }
 
