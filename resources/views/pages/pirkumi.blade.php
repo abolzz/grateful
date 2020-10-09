@@ -17,7 +17,7 @@
 		    	</tr>
 		    	<tr>
 		    		<td>{{$purchase->bought_listing}}</td>
-		    		<td>{{$purchase->price}}</td>
+		    		<td>€ {{$purchase->price}}</td>
 		    		<td>{{$purchase->purchase_key}}</td>
 		    		<td>{{ Carbon\Carbon::parse($purchase->purchase_time)->format('Y-m-d') }}</td>
 		    	</tr>
