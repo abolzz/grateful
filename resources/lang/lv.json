@@ -1,3 +1,7 @@
 {
-  "Verify Email Address" : "Apstipriniet savu e-pasta adresi"
+  "Verify Email Address" : "Apstipriniet savu e-pasta adresi",
+  "Hello!" : "Sveiki!",
+  "Please click the button below to verify your email address." : "Lūdzu, spiediet uz pogas zemāk, lai apstiprinātu savu e-pasta adresi.",
+  "If you did not create an account, no further action is required." : "Ja Jūs neizveidojāt kontu, tad tālaka rīcība nav nepieciešama.",
+  "Regards" : "Ar cieņu"
 }
