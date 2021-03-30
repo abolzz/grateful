@@ -95,6 +95,7 @@
                             </small>
                         </div>
                             @guest
+                                <small>Ienāciet, lai pirktu</small>
                             @else
                                 @if($shop->email != auth()->user()->email)
                                     <button onclick="buying({{$listing->id}});" class="btn btn-default w-25">Pirkt</button>
