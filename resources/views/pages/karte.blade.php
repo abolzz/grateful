@@ -7,7 +7,8 @@
 @endsection
 
 @foreach ($shops as $shop)
-	<?php $locations[]=array( 'title'=>$shop->name, 'address'=>$shop->address ); ?>
+	<?php $locations[]=array( 'title'=>$shop->name, 'address'=>$shop->address );
+		  $links[]=array( 'id'=>$shop->id ); ?>
 @endforeach
 
 @section('scripts')
@@ -16,7 +17,7 @@
     	var locations = [
     	<?php for($i=0;$i<sizeof($locations);$i++)
         { ?>
-			  ['<?php echo $locations[$i]['title']?>', '<?php echo $locations[$i]['address']?>'],
+			  ['<a href="/veikali/<?php echo $links[$i]['id']?>"><?php echo $locations[$i]['title']?></a>', '<?php echo $locations[$i]['address']?>'],
 		<?php } ?>
 		];
 
