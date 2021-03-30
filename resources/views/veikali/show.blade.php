@@ -15,7 +15,7 @@
                         </a>
                     @endif
                     @foreach($likes as $like)
-                        @if(($like->liked_from == Auth::user()->id) < 1)
+                        @if(Auth::user() && ($like->liked_from == Auth::user()->id) < 1)
                         <a @guest @else @if(Auth::user()->id != $shop->user_id)
                             href="like/{{$shop->id}}"
                             @endif @endguest class="btn text-white d-flex align-items-end">
@@ -37,6 +37,7 @@
                         @break
                         @endif
                     @endforeach
+                    
             <a href="/veikali" class="text-white">
                 <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-arrow-left-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" d="M7.854 4.646a.5.5 0 0 1 0 .708L5.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z"/>
