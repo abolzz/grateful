@@ -11742,3 +11742,48 @@ a.text-dark-opaque:focus {
   }
 }
 
+#cookie-banner {
+  padding: 1rem;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #2a4365;
+}
+
+#cookie-banner div {
+  background-color: #2c5282;
+  color: #ebf8ff;
+  border-radius: 9999px;
+  padding: 0.5rem 0.75rem;
+  line-height: 1;
+  -webkit-box-align: center;
+          align-items: center;
+  display: -webkit-inline-box;
+  display: inline-flex;
+}
+
+#consent-cookies {
+  cursor: pointer;
+}
+
+#cookie-banner div span:first-child {
+  text-align: left;
+  margin-right: 0.5rem;
+  font-weight: 600;
+  -webkit-box-flex: 1;
+          flex: 1 1 auto;
+}
+
+#cookie-banner div span:second-child {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  font-weight: 700;
+  display: -webkit-box;
+  display: flex;
+  cursor: pointer;
+  border-radius: 9999px;
+  background-color: #4299e1;
+}
+
