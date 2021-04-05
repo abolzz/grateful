@@ -24,9 +24,23 @@
             @include('includes.messages')
             @yield('jumbotron')
             <div class="container">
+
+                    <!-- Loader -->
+                    <div class="loader-bg">
+                      <div class="lds-ripple"><div></div><div></div></div>
+                    </div>
+
                 @yield('content')
                 @yield('scripts')
-            </div>
+
+            <script type="text/javascript">
+                $(document).ready(function(){
+
+                  $(".loader-bg").fadeOut("slow");
+
+                });
+            </script>
+            
         </main>
         @include('includes.footer')
     </body>
