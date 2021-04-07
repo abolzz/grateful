@@ -113,7 +113,7 @@
   <!-- Footer Links -->
 
   <!-- Copyright -->
-  <div class="footer-copyright text-center py-3 text-white">© 2020 Copyright: Grateful</div>
+  <div class="footer-copyright text-center py-3 text-white">© 2021 Copyright: Grateful</div>
   <!-- Copyright -->
 
 </footer>
