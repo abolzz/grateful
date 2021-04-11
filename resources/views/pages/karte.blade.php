@@ -17,7 +17,7 @@
     	var locations = [
     	<?php for($i=0;$i<sizeof($locations);$i++)
         { ?>
-			  ['<a href="/veikali/<?php echo $links[$i]['id']?>"><?php echo $locations[$i]['title']?></a>', '<?php echo $locations[$i]['address']?>'],
+			  ['<a href="/veikali/{{ $links[$i]['id'] }}">{{ $locations[$i]['title'] }}</a>', '{{ $locations[$i]['address'] }}'],
 		<?php } ?>
 		];
 
