@@ -31,6 +31,15 @@
 		      zoom: 12,
 		      mapTypeId: google.maps.MapTypeId.ROADMAP
 		    });
+
+		 // ask for location and if allowed center map accordingly
+		 if (navigator.geolocation) {
+		     navigator.geolocation.getCurrentPosition(function (position) {
+		         initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+		         map.setCenter(initialLocation);
+		     });
+		 }
+
 		  geocoder = new google.maps.Geocoder();
 
 		  for (i = 0; i < locations.length; i++) {
@@ -60,7 +69,6 @@
 		      	if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
 		      		setTimeout(200);
 		      	}
-		        console.log("geocode of " + address + " failed:" + status);
 		      }
 		    });
 		}
@@ -74,19 +82,6 @@
 		    });
 		    iw.open(map, marker);
 		  });
-		}
-
-		function createMarker(results) {
-		  var marker = new google.maps.Marker({
-		    icon: 'http://maps.google.com/mapfiles/ms/icons/blue.png',
-		    map: map,
-		    position: results[0].geometry.location,
-		    title: title,
-		    animation: google.maps.Animation.DROP,
-		    address: address
-		  })
-		  infoWindow(marker, map, title, address);
-		  return marker;
 		}
     </script>
 @stop
