@@ -93,6 +93,7 @@ $mail->Host       = "smtp.gmail.com"; // SMTP server example
 $mail->SMTPSecure = 'tls';
 $mail->SMTPDebug  = 1;                     // enables SMTP debug information (for testing)
 $mail->SMTPAuth   = true;                  // enable SMTP authentication
+$mail->AuthType = 'LOGIN';
 $mail->Port       = 587;                    // set the SMTP port for the GMAIL server
 $mail->Username   = getenv('MAIL_USERNAME'); // SMTP account username example
 $mail->Password   = getenv('MAIL_PASSWORD');        // SMTP account password example
