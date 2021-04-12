@@ -139,6 +139,7 @@
                                             <input type="hidden" name="lister_name" value="{{$listing->user_id}}">
                                             <input type="hidden" name="price" value="{{$listing->price}}">
                                             <input type="hidden" name="boughtListing" value="{{$listing->listing_name}}">
+                                            <input type="hidden" name="boughtListingId" value="{{$listing->id}}">
                                             <input type="hidden" name="buyer" value="{{Auth::user()->email}}">
                                             <button type="submit" class="btn btn-primary">Turpināt</button>
                                         </form>

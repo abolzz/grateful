@@ -70,6 +70,7 @@ $purchaseData = [
   'last_name' => $last_name,
   'bought_from' => $lister_name,
   'bought_listing' => $bought_listing,
+  'bought_listing_id' => $bought_listing_id,
   'bought_quantity' => $bought_quantity,
   'purchase_key' => $purchase_key,
   'status' => $charge->status,

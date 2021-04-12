@@ -13,6 +13,7 @@
         $buyer = $POST['buyer'];
         $bought_quantity = $POST['boughtQuantity'];
         $bought_listing = $POST['boughtListing'];
+        $bought_listing_id = $POST['boughtListingId'];
         $price = $bought_quantity * $POST['price'] * 100;
       ?>
       <div class="col-12 col-md-6 mx-auto">
