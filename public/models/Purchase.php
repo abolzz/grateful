@@ -24,6 +24,19 @@
 
       // Execute
       $this->db->execute();
+
+    }
+
+    public function updateListing($data) {
+      // Prepare Query
+      $this->db->query('UPDATE listings SET quantity = (quantity - :bought_quantity) WHERE id = :bought_listing_id');
+
+      // Bind Values
+      $this->db->bind(':bought_listing_id', $data['bought_listing_id']);
+      $this->db->bind(':bought_quantity', $data['bought_quantity']);
+
+      // Execute
+      $this->db->execute();
       
     }
 

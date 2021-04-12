@@ -26,6 +26,7 @@ $first_name = $POST['first_name'];
 $last_name = $POST['last_name'];
 $price = $POST['price'];
 $bought_listing = $POST['listing'];
+$bought_listing_id = $POST['listing_id'];
 $email = $POST['email'];
 $token = $POST['stripeToken'];
 
@@ -81,6 +82,7 @@ $purchase = new Purchase();
 
 // Add Purchase To DB
 $purchase->addPurchase($purchaseData);
+$purchase->updateListing($purchaseData);
 
 $mail = new PHPMailer();
 

@@ -24,6 +24,7 @@
         <input type="hidden" name="buyer" value="{{ $buyer }}">
         <input type="hidden" name="quantity" value="{{ $bought_quantity }}">
         <input type="hidden" name="listing" value="{{ $bought_listing }}">
+        <input type="hidden" name="listing_id" value="{{ $bought_listing_id }}">
         <input type="text" class="mb-2 form-control" placeholder="Vārds" name="first_name">
         <input type="text" class="mb-2 form-control" placeholder="Uzvārds" name="last_name">
         <input type="email" class="mb-2 form-control" placeholder="E-pasta adrese" name="email">
