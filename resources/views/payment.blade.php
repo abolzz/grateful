@@ -16,14 +16,14 @@
         $price = $bought_quantity * $POST['price'] * 100;
       ?>
       <div class="col-12 col-md-6 mx-auto">
-        <p><?=$bought_listing?></p>
-        <p>Pirkuma summa: <?=$POST['price']*$bought_quantity?>EUR</p>
+        <p>{{ $bought_listing }}</p>
+        <p>Pirkuma summa: {{ $POST['price']*$bought_quantity }}EUR</p>
 
-        <input type="hidden" name="lister_name" value="<?=$lister_name?>">
-        <input type="hidden" name="price" value="<?=$price?>">
-        <input type="hidden" name="buyer" value="<?=$buyer?>">
-        <input type="hidden" name="quantity" value="<?=$bought_quantity?>">
-        <input type="hidden" name="listing" value="<?=$bought_listing?>">
+        <input type="hidden" name="lister_name" value="{{ $lister_name }}">
+        <input type="hidden" name="price" value="{{ $price }}">
+        <input type="hidden" name="buyer" value="{{ $buyer }}">
+        <input type="hidden" name="quantity" value="{{ $bought_quantity }}">
+        <input type="hidden" name="listing" value="{{ $bought_listing }}">
         <input type="text" class="mb-2 form-control" placeholder="Vārds" name="first_name">
         <input type="text" class="mb-2 form-control" placeholder="Uzvārds" name="last_name">
         <input type="email" class="mb-2 form-control" placeholder="E-pasta adrese" name="email">

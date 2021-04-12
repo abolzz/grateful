@@ -102,8 +102,8 @@ $mail->SetFrom("abolzzy@gmail.com");
 $mail->isHTML(true);                              // Set email format to HTML
 $mail->AddAddress($email);
 $mail->Subject = 'Grateful pirkums';
-$mail->Body    = 'Paldies par pirkumu! Pirkuma kods: '.$purchase_key;
-$mail->AltBody = 'Paldies par pirkumu! Pirkuma kods: '.$purchase_key;
+$mail->Body    = 'Paldies par pirkumu! Pirkuma kods: <b>'.$purchase_key.'</b>';
+$mail->AltBody = 'Paldies par pirkumu! Pirkuma kods: <b>'.$purchase_key.'</b>';
 
 if(!$mail->Send()) {
    echo "Mailer Error: " . $mail->ErrorInfo;
