@@ -23,11 +23,8 @@
       $this->db->bind(':price', $data['price']);
 
       // Execute
-      if($this->db->execute()) {
-        return true;
-      } else {
-        echo PDOStatement->errorInfo();
-      }
+      $this->db->execute();
+      
     }
 
     public function getPurchases($id) {
