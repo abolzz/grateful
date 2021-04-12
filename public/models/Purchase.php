@@ -26,7 +26,7 @@
       if($this->db->execute()) {
         return true;
       } else {
-        PDO::errorInfo();
+        return false;
       }
     }
 
