@@ -1,27 +1,3 @@
-{{-- @extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Vadības panelis</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <a href="/veikali/create" class="btn btn-primary">Izveidot veikalu</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection --}}
-  
 @extends('layouts.app')
 
 @section('content')
@@ -79,7 +55,15 @@
                             @foreach($listings as $listing)
                                 <tr>
                                     <td>{{$listing->listing_name}}</td>
-                                    <td>@if($listing->purchases > 0)<a href="javascript:void(0)" onclick="purchases({{$listing->id}});">@endif{{$listing->purchases}}@if($listing->purchases > 0)</a>@endif</td>
+                                    <td>
+                                        @if($listing->purchases > 0)
+                                        <a href="javascript:void(0)" onclick="purchases({{$listing->id}});">
+                                        @endif
+                                            {{$listing->purchases}}
+                                        @if($listing->purchases > 0)
+                                            </a>
+                                        @endif
+                                    </td>
                                     <td>{{$listing->quantity}}</td>
                                     <td><a href="/piedavajumi/{{$listing->id}}/edit" class="btn btn-default">Labot</a></td>
                                     <td>
