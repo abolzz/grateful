@@ -109,7 +109,7 @@ if(!$mail->Send()) {
    echo "Mailer Error: " . $mail->ErrorInfo;
 } else {
     // Redirect to success
-	echo "Paldies par pirkumu! Pirkuma kods: $purchase_key";
+	echo "Paldies par pirkumu! Pirkuma kods: <b>$purchase_key</b>";
 }
 
 ?>
