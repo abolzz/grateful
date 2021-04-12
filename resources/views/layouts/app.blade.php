@@ -38,12 +38,11 @@
         {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> server --}}
         <link href="/css/app.css" rel="stylesheet">
 
-        <meta property="og:locale" content="en_GB" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Page Title Here" />
-        <meta property="og:description" content="Page Description" />
-        <meta property="og:url" content="http://www.example.com/" />
-        <meta property="og:site_name" content="Example" />
+        <meta property="og:title" content="Grateful" />
+        <meta property="og:description" content="Hey! Es tikko izglābu maltīti ar Grateful!" />
+        <meta property="og:url" content="http://www.grateful.lv/" />
+        <meta property="og:site_name" content="Grateful" />
         <meta property="og:image" content="http://www.example.com/image-here.jpg" />
     </head>
     <body>
