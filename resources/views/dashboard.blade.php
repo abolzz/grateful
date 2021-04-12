@@ -98,10 +98,14 @@
                                             @foreach($purchases as $purchase)
                                             <tr>
                                                 <th>Pirkuma kods</th>
+                                                <th>Prece</th>
+                                                <th>Daudzums</th>
                                                 <th>Pirkuma laiks</th>
                                             </tr>
                                             <tr>
                                                 <td>{{$purchase->purchase_key}}</td>
+                                                <td>{{$purchase->bought_listing}}</td>
+                                                <td>{{$purchase->bought_quantity}}</td>
                                                 <td>{{$purchase->purchase_time}}</td>
                                             </tr>
                                             @endforeach
