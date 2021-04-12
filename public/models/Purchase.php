@@ -26,7 +26,7 @@
       if($this->db->execute()) {
         return true;
       } else {
-        PDOStatement->errorInfo();
+        echo PDOStatement->errorInfo();
       }
     }
 
