@@ -84,7 +84,7 @@
     </div>
 @endsection
 
-                        <div id="purchasesModal" class="modal d-none" tabindex="-1" role="dialog">
+                        <div id="purchasesModal" class="modal" tabindex="-1" role="dialog">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
